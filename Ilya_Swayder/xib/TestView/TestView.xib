@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TestView" customModule="Ilya_Swayder" customModuleProvider="target">
+            <connections>
+                <outlet property="fastForward" destination="Jg5-eY-dtc" id="ybY-FN-bOP"/>
+                <outlet property="name" destination="BNK-Sf-kmc" id="gLo-VI-21M"/>
+                <outlet property="pause" destination="YEn-zM-I8y" id="lRU-Eu-zDJ"/>
+                <outlet property="rewind" destination="Dsg-fw-3y4" id="NbV-Qw-s3K"/>
+                <outlet property="testViewConnect" destination="iN0-l3-epB" id="dwI-yw-mQv"/>
+                <outlet property="timerLabel" destination="eA3-6i-VGo" id="ruf-P7-jZJ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="view">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNK-Sf-kmc">
+                    <rect key="frame" x="0.0" y="44" width="375" height="97"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="97" id="CUX-qM-e2F"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsg-fw-3y4">
+                    <rect key="frame" x="16" y="718" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="LzD-4G-FBi"/>
+                        <constraint firstAttribute="height" constant="50" id="PlS-p6-YrI"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="icons8-rewind.png"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YEn-zM-I8y">
+                    <rect key="frame" x="162.66666666666666" y="718" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="TmL-NA-Kjr"/>
+                        <constraint firstAttribute="width" constant="50" id="VeT-oK-HTI"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="icons8-pause.png"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jg5-eY-dtc">
+                    <rect key="frame" x="309" y="718" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="8gV-K0-G6t"/>
+                        <constraint firstAttribute="width" constant="50" id="vB8-97-zvw"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="icons8-fast.png"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eA3-6i-VGo">
+                    <rect key="frame" x="87.666666666666686" y="246" width="200" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="DAE-y2-BtH"/>
+                        <constraint firstAttribute="height" constant="100" id="Fyx-v0-0fW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="53"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Jg5-eY-dtc" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-10" id="2hu-Yc-8dR"/>
+                <constraint firstItem="Dsg-fw-3y4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Jo0-XQ-536"/>
+                <constraint firstItem="YEn-zM-I8y" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Lc1-3k-CeV"/>
+                <constraint firstItem="BNK-Sf-kmc" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Q3s-Mx-56t"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Jg5-eY-dtc" secondAttribute="trailing" constant="16" id="QjS-jY-1ok"/>
+                <constraint firstItem="YEn-zM-I8y" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-10" id="UZz-x4-Ql0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BNK-Sf-kmc" secondAttribute="trailing" id="V0w-hI-yyv"/>
+                <constraint firstItem="Dsg-fw-3y4" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-10" id="bbh-at-c2g"/>
+                <constraint firstItem="BNK-Sf-kmc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="kBF-gs-hm4"/>
+                <constraint firstItem="eA3-6i-VGo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pqt-E1-HhM"/>
+                <constraint firstItem="eA3-6i-VGo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-110" id="quf-8z-b5I"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icons8-fast.png" width="137.87234497070312" height="137.87234497070312"/>
+        <image name="icons8-pause.png" width="137.87234497070312" height="137.87234497070312"/>
+        <image name="icons8-rewind.png" width="137.87234497070312" height="137.87234497070312"/>
+    </resources>
+</document>

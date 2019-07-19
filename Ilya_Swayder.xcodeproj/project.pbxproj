@@ -3,17 +3,60 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F14D346A22C53A4900B18BFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D346922C53A4900B18BFA /* AppDelegate.swift */; };
+		7F1AE1724F1C2D51CD986EA8 /* Pods_Ilya_Swayder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 318EE172871BE56836DB8D48 /* Pods_Ilya_Swayder.framework */; };
 		F14D346C22C53A4900B18BFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D346B22C53A4900B18BFA /* ViewController.swift */; };
-		F14D346F22C53A4900B18BFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14D346D22C53A4900B18BFA /* Main.storyboard */; };
 		F14D347122C53A4B00B18BFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F14D347022C53A4B00B18BFA /* Assets.xcassets */; };
 		F14D347422C53A4B00B18BFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14D347222C53A4B00B18BFA /* LaunchScreen.storyboard */; };
 		F14D347F22C53A4B00B18BFA /* Ilya_SwayderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D347E22C53A4B00B18BFA /* Ilya_SwayderTests.swift */; };
 		F14D348A22C53A4B00B18BFA /* Ilya_SwayderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D348922C53A4B00B18BFA /* Ilya_SwayderUITests.swift */; };
+		F14D34A422C53CAF00B18BFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14D34A322C53CAF00B18BFA /* Main.storyboard */; };
+		F14D34A622C53CD700B18BFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34A522C53CD600B18BFA /* AppDelegate.swift */; };
+		F14D34AF22C53D1300B18BFA /* icons8-pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F14D34A922C53D1000B18BFA /* icons8-pause@2x.png */; };
+		F14D34B022C53D1300B18BFA /* icons8-pause@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F14D34AA22C53D1100B18BFA /* icons8-pause@3x.png */; };
+		F14D34B122C53D1300B18BFA /* icons8-rewind@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F14D34AB22C53D1100B18BFA /* icons8-rewind@3x.png */; };
+		F14D34B222C53D1300B18BFA /* icons8-fast@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F14D34AC22C53D1200B18BFA /* icons8-fast@2x.png */; };
+		F14D34B322C53D1300B18BFA /* icons8-fast@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F14D34AD22C53D1200B18BFA /* icons8-fast@3x.png */; };
+		F14D34B422C53D1300B18BFA /* icons8-rewind@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F14D34AE22C53D1200B18BFA /* icons8-rewind@2x.png */; };
+		F14D34C222C5457100B18BFA /* StatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34C022C5457100B18BFA /* StatusBarView.swift */; };
+		F14D34C322C5457100B18BFA /* StatusBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F14D34C122C5457100B18BFA /* StatusBarView.xib */; };
+		F14D34C722C5458700B18BFA /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F14D34C522C5458700B18BFA /* TestView.xib */; };
+		F14D34C822C5458700B18BFA /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34C622C5458700B18BFA /* TestView.swift */; };
+		F14D34CB22C545BA00B18BFA /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34CA22C545BA00B18BFA /* SignInViewController.swift */; };
+		F14D34CD22C545D300B18BFA /* StudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34CC22C545D300B18BFA /* StudyViewController.swift */; };
+		F14D34D222C545E900B18BFA /* TugReliability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34CF22C545E800B18BFA /* TugReliability.swift */; };
+		F14D34D322C545E900B18BFA /* SingleLegStance.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34D022C545E800B18BFA /* SingleLegStance.swift */; };
+		F14D34D422C545E900B18BFA /* TUG.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34D122C545E800B18BFA /* TUG.swift */; };
+		F14D34D722C545F900B18BFA /* StudyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34D622C545F900B18BFA /* StudyData.swift */; };
+		F14D34DC22C5461300B18BFA /* PerformTrial.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34DA22C5461300B18BFA /* PerformTrial.swift */; };
+		F14D34E122C7DE7C00B18BFA /* icons8-back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F14D34DF22C7DE7C00B18BFA /* icons8-back@3x.png */; };
+		F14D34E222C7DE7C00B18BFA /* icons8-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F14D34E022C7DE7C00B18BFA /* icons8-back@2x.png */; };
+		F14D34E522C7DEF900B18BFA /* icons8-back-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F14D34E322C7DEF900B18BFA /* icons8-back-white@2x.png */; };
+		F14D34E622C7DEF900B18BFA /* icons8-back-white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F14D34E422C7DEF900B18BFA /* icons8-back-white@3x.png */; };
+		F14D34E822C7E1C100B18BFA /* ParticipantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34E722C7E1C100B18BFA /* ParticipantViewController.swift */; };
+		F14D34EB22C91D4100B18BFA /* StudyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34EA22C91D4100B18BFA /* StudyModel.swift */; };
+		F14D34EE22C91F7A00B18BFA /* Study+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34ED22C91F7A00B18BFA /* Study+Extention.swift */; };
+		F14D34F022CA693900B18BFA /* ParticipantViewController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34EF22CA693900B18BFA /* ParticipantViewController+Extention.swift */; };
+		F14D34F222CA82D400B18BFA /* ListOfTrialsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34F122CA82D400B18BFA /* ListOfTrialsTableViewController.swift */; };
+		F14D34F522CBC12100B18BFA /* ListOfTrialsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34F422CBC12100B18BFA /* ListOfTrialsHeaderCell.swift */; };
+		F14D34F722CBC18F00B18BFA /* ListOfTrialsContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34F622CBC18F00B18BFA /* ListOfTrialsContentCell.swift */; };
+		F14D34F922CBCCF800B18BFA /* TrialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34F822CBCCF800B18BFA /* TrialViewController.swift */; };
+		F14D34FB22CD41A400B18BFA /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34FA22CD41A400B18BFA /* SignInModel.swift */; };
+		F14D34FD22CE603800B18BFA /* UIImageView+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34FC22CE603800B18BFA /* UIImageView+Extention.swift */; };
+		F14D350022CFBD6E00B18BFA /* StudyViewController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D34FF22CFBD6E00B18BFA /* StudyViewController+Extention.swift */; };
+		F14D350222D250B600B18BFA /* FileManagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D350122D250B600B18BFA /* FileManagerModel.swift */; };
+		F14D350422D4F9FC00B18BFA /* ReachabilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D350322D4F9FC00B18BFA /* ReachabilityModel.swift */; };
+		F14D350622D50A6000B18BFA /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D350522D50A6000B18BFA /* TestViewController.swift */; };
+		F14D350822D64CA100B18BFA /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D350722D64CA100B18BFA /* TestModel.swift */; };
+		F14D350A22D652A300B18BFA /* TrialSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D350922D652A300B18BFA /* TrialSetup.swift */; };
+		F14D350D22D79EFA00B18BFA /* Trial.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D350C22D79EFA00B18BFA /* Trial.swift */; };
+		F14D350F22DB9F7500B18BFA /* ATGoogleDriveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D350E22DB9F7400B18BFA /* ATGoogleDriveModel.swift */; };
+		F153741D22DCE5440020CE91 /* rawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153741C22DCE5440020CE91 /* rawData.swift */; };
+		F153742322DFB8730020CE91 /* icons8-play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F153742222DFB8730020CE91 /* icons8-play@3x.png */; };
+		F153742522DFB8790020CE91 /* icons8-play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F153742422DFB8790020CE91 /* icons8-play@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +77,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		318EE172871BE56836DB8D48 /* Pods_Ilya_Swayder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ilya_Swayder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		47C1F2A93E5F4E64F5180C74 /* Pods-Ilya_Swayder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ilya_Swayder.debug.xcconfig"; path = "Target Support Files/Pods-Ilya_Swayder/Pods-Ilya_Swayder.debug.xcconfig"; sourceTree = "<group>"; };
+		760B6D7775DDBD3C59C4BB48 /* Pods-Ilya_Swayder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ilya_Swayder.release.xcconfig"; path = "Target Support Files/Pods-Ilya_Swayder/Pods-Ilya_Swayder.release.xcconfig"; sourceTree = "<group>"; };
 		F14D346622C53A4900B18BFA /* Ilya_Swayder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ilya_Swayder.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F14D346922C53A4900B18BFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F14D346B22C53A4900B18BFA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F14D346E22C53A4900B18BFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F14D347022C53A4B00B18BFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F14D347322C53A4B00B18BFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F14D347522C53A4B00B18BFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +91,51 @@
 		F14D348522C53A4B00B18BFA /* Ilya_SwayderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Ilya_SwayderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14D348922C53A4B00B18BFA /* Ilya_SwayderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ilya_SwayderUITests.swift; sourceTree = "<group>"; };
 		F14D348B22C53A4B00B18BFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F14D34A322C53CAF00B18BFA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F14D34A522C53CD600B18BFA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F14D34A922C53D1000B18BFA /* icons8-pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-pause@2x.png"; sourceTree = "<group>"; };
+		F14D34AA22C53D1100B18BFA /* icons8-pause@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-pause@3x.png"; sourceTree = "<group>"; };
+		F14D34AB22C53D1100B18BFA /* icons8-rewind@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-rewind@3x.png"; sourceTree = "<group>"; };
+		F14D34AC22C53D1200B18BFA /* icons8-fast@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-fast@2x.png"; sourceTree = "<group>"; };
+		F14D34AD22C53D1200B18BFA /* icons8-fast@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-fast@3x.png"; sourceTree = "<group>"; };
+		F14D34AE22C53D1200B18BFA /* icons8-rewind@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-rewind@2x.png"; sourceTree = "<group>"; };
+		F14D34C022C5457100B18BFA /* StatusBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarView.swift; sourceTree = "<group>"; };
+		F14D34C122C5457100B18BFA /* StatusBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusBarView.xib; sourceTree = "<group>"; };
+		F14D34C522C5458700B18BFA /* TestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
+		F14D34C622C5458700B18BFA /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		F14D34CA22C545BA00B18BFA /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		F14D34CC22C545D300B18BFA /* StudyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyViewController.swift; sourceTree = "<group>"; };
+		F14D34CF22C545E800B18BFA /* TugReliability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TugReliability.swift; sourceTree = "<group>"; };
+		F14D34D022C545E800B18BFA /* SingleLegStance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleLegStance.swift; sourceTree = "<group>"; };
+		F14D34D122C545E800B18BFA /* TUG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUG.swift; sourceTree = "<group>"; };
+		F14D34D622C545F900B18BFA /* StudyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyData.swift; sourceTree = "<group>"; };
+		F14D34DA22C5461300B18BFA /* PerformTrial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformTrial.swift; sourceTree = "<group>"; };
+		F14D34DF22C7DE7C00B18BFA /* icons8-back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-back@3x.png"; sourceTree = "<group>"; };
+		F14D34E022C7DE7C00B18BFA /* icons8-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-back@2x.png"; sourceTree = "<group>"; };
+		F14D34E322C7DEF900B18BFA /* icons8-back-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-back-white@2x.png"; sourceTree = "<group>"; };
+		F14D34E422C7DEF900B18BFA /* icons8-back-white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-back-white@3x.png"; sourceTree = "<group>"; };
+		F14D34E722C7E1C100B18BFA /* ParticipantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantViewController.swift; sourceTree = "<group>"; };
+		F14D34EA22C91D4100B18BFA /* StudyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyModel.swift; sourceTree = "<group>"; };
+		F14D34ED22C91F7A00B18BFA /* Study+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Study+Extention.swift"; sourceTree = "<group>"; };
+		F14D34EF22CA693900B18BFA /* ParticipantViewController+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParticipantViewController+Extention.swift"; sourceTree = "<group>"; };
+		F14D34F122CA82D400B18BFA /* ListOfTrialsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfTrialsTableViewController.swift; sourceTree = "<group>"; };
+		F14D34F422CBC12100B18BFA /* ListOfTrialsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfTrialsHeaderCell.swift; sourceTree = "<group>"; };
+		F14D34F622CBC18F00B18BFA /* ListOfTrialsContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfTrialsContentCell.swift; sourceTree = "<group>"; };
+		F14D34F822CBCCF800B18BFA /* TrialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialViewController.swift; sourceTree = "<group>"; };
+		F14D34FA22CD41A400B18BFA /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
+		F14D34FC22CE603800B18BFA /* UIImageView+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extention.swift"; sourceTree = "<group>"; };
+		F14D34FE22CFBC4100B18BFA /* Ilya_Swayder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ilya_Swayder.entitlements; sourceTree = "<group>"; };
+		F14D34FF22CFBD6E00B18BFA /* StudyViewController+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudyViewController+Extention.swift"; sourceTree = "<group>"; };
+		F14D350122D250B600B18BFA /* FileManagerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerModel.swift; sourceTree = "<group>"; };
+		F14D350322D4F9FC00B18BFA /* ReachabilityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityModel.swift; sourceTree = "<group>"; };
+		F14D350522D50A6000B18BFA /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		F14D350722D64CA100B18BFA /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
+		F14D350922D652A300B18BFA /* TrialSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialSetup.swift; sourceTree = "<group>"; };
+		F14D350C22D79EFA00B18BFA /* Trial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trial.swift; sourceTree = "<group>"; };
+		F14D350E22DB9F7400B18BFA /* ATGoogleDriveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATGoogleDriveModel.swift; sourceTree = "<group>"; };
+		F153741C22DCE5440020CE91 /* rawData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rawData.swift; sourceTree = "<group>"; };
+		F153742222DFB8730020CE91 /* icons8-play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-play@3x.png"; sourceTree = "<group>"; };
+		F153742422DFB8790020CE91 /* icons8-play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-play@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F1AE1724F1C2D51CD986EA8 /* Pods_Ilya_Swayder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +164,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32894BC346A5346347132C1C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				318EE172871BE56836DB8D48 /* Pods_Ilya_Swayder.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F14D345D22C53A4900B18BFA = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +179,8 @@
 				F14D347D22C53A4B00B18BFA /* Ilya_SwayderTests */,
 				F14D348822C53A4B00B18BFA /* Ilya_SwayderUITests */,
 				F14D346722C53A4900B18BFA /* Products */,
+				FE562F12CAD0A254A3853270 /* Pods */,
+				32894BC346A5346347132C1C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,11 +197,22 @@
 		F14D346822C53A4900B18BFA /* Ilya_Swayder */ = {
 			isa = PBXGroup;
 			children = (
-				F14D346922C53A4900B18BFA /* AppDelegate.swift */,
+				F14D34FE22CFBC4100B18BFA /* Ilya_Swayder.entitlements */,
+				F14D350B22D79EE100B18BFA /* Interface */,
+				F14D34F322CBC10100B18BFA /* Cells */,
+				F14D34EC22C91F5300B18BFA /* Extentions */,
+				F14D34E922C91D2E00B18BFA /* Models */,
+				F14D34D822C5460800B18BFA /* Protocols */,
+				F14D34D522C545EE00B18BFA /* Structs */,
+				F14D34CE22C545DF00B18BFA /* Trials */,
+				F14D34C922C5459100B18BFA /* ViewControllers */,
+				F14D34BE22C5455100B18BFA /* xib */,
+				F14D34B522C53D2400B18BFA /* Images */,
 				F14D346B22C53A4900B18BFA /* ViewController.swift */,
-				F14D346D22C53A4900B18BFA /* Main.storyboard */,
 				F14D347022C53A4B00B18BFA /* Assets.xcassets */,
 				F14D347222C53A4B00B18BFA /* LaunchScreen.storyboard */,
+				F14D34A522C53CD600B18BFA /* AppDelegate.swift */,
+				F14D34A322C53CAF00B18BFA /* Main.storyboard */,
 				F14D347522C53A4B00B18BFA /* Info.plist */,
 			);
 			path = Ilya_Swayder;
@@ -125,6 +236,143 @@
 			path = Ilya_SwayderUITests;
 			sourceTree = "<group>";
 		};
+		F14D34B522C53D2400B18BFA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				F153742222DFB8730020CE91 /* icons8-play@3x.png */,
+				F153742422DFB8790020CE91 /* icons8-play@2x.png */,
+				F14D34E322C7DEF900B18BFA /* icons8-back-white@2x.png */,
+				F14D34E422C7DEF900B18BFA /* icons8-back-white@3x.png */,
+				F14D34E022C7DE7C00B18BFA /* icons8-back@2x.png */,
+				F14D34DF22C7DE7C00B18BFA /* icons8-back@3x.png */,
+				F14D34AC22C53D1200B18BFA /* icons8-fast@2x.png */,
+				F14D34AD22C53D1200B18BFA /* icons8-fast@3x.png */,
+				F14D34A922C53D1000B18BFA /* icons8-pause@2x.png */,
+				F14D34AA22C53D1100B18BFA /* icons8-pause@3x.png */,
+				F14D34AE22C53D1200B18BFA /* icons8-rewind@2x.png */,
+				F14D34AB22C53D1100B18BFA /* icons8-rewind@3x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		F14D34BE22C5455100B18BFA /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				F14D34C422C5457800B18BFA /* TestView */,
+				F14D34BF22C5455D00B18BFA /* StatusBarItem */,
+			);
+			path = xib;
+			sourceTree = "<group>";
+		};
+		F14D34BF22C5455D00B18BFA /* StatusBarItem */ = {
+			isa = PBXGroup;
+			children = (
+				F14D34C022C5457100B18BFA /* StatusBarView.swift */,
+				F14D34C122C5457100B18BFA /* StatusBarView.xib */,
+			);
+			path = StatusBarItem;
+			sourceTree = "<group>";
+		};
+		F14D34C422C5457800B18BFA /* TestView */ = {
+			isa = PBXGroup;
+			children = (
+				F14D34C622C5458700B18BFA /* TestView.swift */,
+				F14D34C522C5458700B18BFA /* TestView.xib */,
+			);
+			path = TestView;
+			sourceTree = "<group>";
+		};
+		F14D34C922C5459100B18BFA /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F14D34CA22C545BA00B18BFA /* SignInViewController.swift */,
+				F14D34CC22C545D300B18BFA /* StudyViewController.swift */,
+				F14D34E722C7E1C100B18BFA /* ParticipantViewController.swift */,
+				F14D34F122CA82D400B18BFA /* ListOfTrialsTableViewController.swift */,
+				F14D34F822CBCCF800B18BFA /* TrialViewController.swift */,
+				F14D350522D50A6000B18BFA /* TestViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F14D34CE22C545DF00B18BFA /* Trials */ = {
+			isa = PBXGroup;
+			children = (
+				F14D34D022C545E800B18BFA /* SingleLegStance.swift */,
+				F14D34D122C545E800B18BFA /* TUG.swift */,
+				F14D34CF22C545E800B18BFA /* TugReliability.swift */,
+			);
+			path = Trials;
+			sourceTree = "<group>";
+		};
+		F14D34D522C545EE00B18BFA /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				F14D34D622C545F900B18BFA /* StudyData.swift */,
+				F14D350922D652A300B18BFA /* TrialSetup.swift */,
+				F153741C22DCE5440020CE91 /* rawData.swift */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
+		F14D34D822C5460800B18BFA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F14D34DA22C5461300B18BFA /* PerformTrial.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		F14D34E922C91D2E00B18BFA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F14D34EA22C91D4100B18BFA /* StudyModel.swift */,
+				F14D34FA22CD41A400B18BFA /* SignInModel.swift */,
+				F14D350122D250B600B18BFA /* FileManagerModel.swift */,
+				F14D350322D4F9FC00B18BFA /* ReachabilityModel.swift */,
+				F14D350722D64CA100B18BFA /* TestModel.swift */,
+				F14D350E22DB9F7400B18BFA /* ATGoogleDriveModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F14D34EC22C91F5300B18BFA /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				F14D34ED22C91F7A00B18BFA /* Study+Extention.swift */,
+				F14D34EF22CA693900B18BFA /* ParticipantViewController+Extention.swift */,
+				F14D34FC22CE603800B18BFA /* UIImageView+Extention.swift */,
+				F14D34FF22CFBD6E00B18BFA /* StudyViewController+Extention.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		F14D34F322CBC10100B18BFA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F14D34F422CBC12100B18BFA /* ListOfTrialsHeaderCell.swift */,
+				F14D34F622CBC18F00B18BFA /* ListOfTrialsContentCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F14D350B22D79EE100B18BFA /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				F14D350C22D79EFA00B18BFA /* Trial.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		FE562F12CAD0A254A3853270 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				47C1F2A93E5F4E64F5180C74 /* Pods-Ilya_Swayder.debug.xcconfig */,
+				760B6D7775DDBD3C59C4BB48 /* Pods-Ilya_Swayder.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +380,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F14D348E22C53A4B00B18BFA /* Build configuration list for PBXNativeTarget "Ilya_Swayder" */;
 			buildPhases = (
+				5C4CDD145408236F10487075 /* [CP] Check Pods Manifest.lock */,
 				F14D346222C53A4900B18BFA /* Sources */,
 				F14D346322C53A4900B18BFA /* Frameworks */,
 				F14D346422C53A4900B18BFA /* Resources */,
+				AE6C7725B3CA4FF35F3F844B /* [CP] Embed Pods Frameworks */,
+				7D02C702E67D573A880047D5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -193,6 +444,14 @@
 				TargetAttributes = {
 					F14D346522C53A4900B18BFA = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					F14D347922C53A4B00B18BFA = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -229,9 +488,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F14D34B222C53D1300B18BFA /* icons8-fast@2x.png in Resources */,
+				F14D34B022C53D1300B18BFA /* icons8-pause@3x.png in Resources */,
 				F14D347422C53A4B00B18BFA /* LaunchScreen.storyboard in Resources */,
 				F14D347122C53A4B00B18BFA /* Assets.xcassets in Resources */,
-				F14D346F22C53A4900B18BFA /* Main.storyboard in Resources */,
+				F14D34C722C5458700B18BFA /* TestView.xib in Resources */,
+				F14D34AF22C53D1300B18BFA /* icons8-pause@2x.png in Resources */,
+				F14D34A422C53CAF00B18BFA /* Main.storyboard in Resources */,
+				F14D34B422C53D1300B18BFA /* icons8-rewind@2x.png in Resources */,
+				F14D34B122C53D1300B18BFA /* icons8-rewind@3x.png in Resources */,
+				F14D34E222C7DE7C00B18BFA /* icons8-back@2x.png in Resources */,
+				F14D34C322C5457100B18BFA /* StatusBarView.xib in Resources */,
+				F14D34E522C7DEF900B18BFA /* icons8-back-white@2x.png in Resources */,
+				F14D34E122C7DE7C00B18BFA /* icons8-back@3x.png in Resources */,
+				F153742522DFB8790020CE91 /* icons8-play@2x.png in Resources */,
+				F14D34B322C53D1300B18BFA /* icons8-fast@3x.png in Resources */,
+				F153742322DFB8730020CE91 /* icons8-play@3x.png in Resources */,
+				F14D34E622C7DEF900B18BFA /* icons8-back-white@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,13 +524,100 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5C4CDD145408236F10487075 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ilya_Swayder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D02C702E67D573A880047D5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ilya_Swayder/Pods-Ilya_Swayder-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ilya_Swayder/Pods-Ilya_Swayder-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ilya_Swayder/Pods-Ilya_Swayder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE6C7725B3CA4FF35F3F844B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ilya_Swayder/Pods-Ilya_Swayder-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ilya_Swayder/Pods-Ilya_Swayder-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ilya_Swayder/Pods-Ilya_Swayder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F14D346222C53A4900B18BFA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F14D34EE22C91F7A00B18BFA /* Study+Extention.swift in Sources */,
+				F14D34FD22CE603800B18BFA /* UIImageView+Extention.swift in Sources */,
+				F14D34DC22C5461300B18BFA /* PerformTrial.swift in Sources */,
+				F14D34F722CBC18F00B18BFA /* ListOfTrialsContentCell.swift in Sources */,
+				F14D350422D4F9FC00B18BFA /* ReachabilityModel.swift in Sources */,
+				F14D350A22D652A300B18BFA /* TrialSetup.swift in Sources */,
+				F14D350F22DB9F7500B18BFA /* ATGoogleDriveModel.swift in Sources */,
+				F14D350822D64CA100B18BFA /* TestModel.swift in Sources */,
+				F14D34D322C545E900B18BFA /* SingleLegStance.swift in Sources */,
+				F14D34F922CBCCF800B18BFA /* TrialViewController.swift in Sources */,
+				F153741D22DCE5440020CE91 /* rawData.swift in Sources */,
+				F14D34C822C5458700B18BFA /* TestView.swift in Sources */,
+				F14D34D222C545E900B18BFA /* TugReliability.swift in Sources */,
+				F14D34E822C7E1C100B18BFA /* ParticipantViewController.swift in Sources */,
+				F14D350622D50A6000B18BFA /* TestViewController.swift in Sources */,
+				F14D34C222C5457100B18BFA /* StatusBarView.swift in Sources */,
+				F14D350D22D79EFA00B18BFA /* Trial.swift in Sources */,
+				F14D34FB22CD41A400B18BFA /* SignInModel.swift in Sources */,
+				F14D34D422C545E900B18BFA /* TUG.swift in Sources */,
+				F14D34A622C53CD700B18BFA /* AppDelegate.swift in Sources */,
+				F14D34CB22C545BA00B18BFA /* SignInViewController.swift in Sources */,
+				F14D34EB22C91D4100B18BFA /* StudyModel.swift in Sources */,
+				F14D34F522CBC12100B18BFA /* ListOfTrialsHeaderCell.swift in Sources */,
+				F14D34F222CA82D400B18BFA /* ListOfTrialsTableViewController.swift in Sources */,
+				F14D34F022CA693900B18BFA /* ParticipantViewController+Extention.swift in Sources */,
+				F14D34D722C545F900B18BFA /* StudyData.swift in Sources */,
+				F14D350222D250B600B18BFA /* FileManagerModel.swift in Sources */,
+				F14D34CD22C545D300B18BFA /* StudyViewController.swift in Sources */,
 				F14D346C22C53A4900B18BFA /* ViewController.swift in Sources */,
-				F14D346A22C53A4900B18BFA /* AppDelegate.swift in Sources */,
+				F14D350022CFBD6E00B18BFA /* StudyViewController+Extention.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,14 +653,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F14D346D22C53A4900B18BFA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F14D346E22C53A4900B18BFA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F14D347222C53A4B00B18BFA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -430,8 +782,10 @@
 		};
 		F14D348F22C53A4B00B18BFA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47C1F2A93E5F4E64F5180C74 /* Pods-Ilya_Swayder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Ilya_Swayder/Ilya_Swayder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E38K59VCJT;
 				INFOPLIST_FILE = Ilya_Swayder/Info.plist;
@@ -448,8 +802,10 @@
 		};
 		F14D349022C53A4B00B18BFA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 760B6D7775DDBD3C59C4BB48 /* Pods-Ilya_Swayder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Ilya_Swayder/Ilya_Swayder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E38K59VCJT;
 				INFOPLIST_FILE = Ilya_Swayder/Info.plist;
