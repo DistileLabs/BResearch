@@ -8,15 +8,30 @@
 
 import Foundation
 
-struct TrialSetup {
+class TrialSetup: NSObject, NSCoding {
     
     let stageName:String?
-    let waitingPeriod:Double?
+    let waitingPeriod:Int?
     let stageNumber:Int?
     
-    init(name:String, waitPeriod:Double, stageNum:Int) {
+    init(name:String, waitPeriod:Int, stageNum:Int) {
         stageName = name
         waitingPeriod = waitPeriod
         stageNumber = stageNum
     }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(stageName, forKey: "stageName")
+        aCoder.encode(waitingPeriod, forKey: "waitingPeriod")
+        aCoder.encode(stageNumber, forKey: "stageNumber")
+    }
+    
+    required convenience init(coder aDecoder: NSCoder) {
+        let stageN = aDecoder.decodeObject(forKey: "stageName") as! String
+        let waitP = aDecoder.decodeInteger(forKey: "waitingPeriod")
+        let stageNum = aDecoder.decodeInteger(forKey: "stageNumber")
+        
+        self.init(name: stageN, waitPeriod: waitP, stageNum: stageNum)
+    }
+    
 }

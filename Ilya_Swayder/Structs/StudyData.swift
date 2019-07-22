@@ -13,7 +13,9 @@ enum StudyError: Error {
     case trialNameNotExists(requstedTrial: String)
 }
 
-struct StudyData {
+class StudyData:NSObject,NSCoding {
+    
+
     
     private var paritcipantID: String
     
@@ -25,7 +27,18 @@ struct StudyData {
         
         paritcipantID = id
     }
-
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(paritcipantID, forKey: "paritcipantID")
+    }
+    
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        let participant = aDecoder.decodeObject(forKey: "paritcipantID") as! String
+        
+        self.init(newParticipant: participant)
+    }
+    
     func getName() -> String? {
         
         return paritcipantID
@@ -48,11 +61,11 @@ struct StudyData {
     func isTrialFinished(trialName: String) -> Bool{
         
         switch trialName {
-        case "Single let stance":
+        case SingleLegStance.getName():
             return SingleLegStance.isFinished
-        case "TUG":
+        case TUG.getName():
             return TUG.isFinished
-        case "TUG reliability":
+        case TugReliability.getName():
             return TugReliability.isFinished
         default:
             return false

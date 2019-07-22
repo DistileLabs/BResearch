@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct rawData {
+class rawData: NSObject, NSCoding {
     
     var stageNumber: Int?
     var stageData:String?
@@ -17,4 +17,17 @@ struct rawData {
         stageNumber = addStageNumber
         stageData = addStageData
     }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(stageData, forKey: "stageData")
+        aCoder.encode(stageNumber, forKey: "stageNumber")
+    }
+    
+    required convenience init(coder aDecoder: NSCoder) {
+        let stageD = aDecoder.decodeObject(forKey: "stageData") as! String
+        let stageNum = aDecoder.decodeInteger(forKey: "stageNumber")
+        
+        self.init(addStageNumber: stageNum, addStageData:stageD)
+    }
+    
 }

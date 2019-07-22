@@ -40,6 +40,11 @@ class Trial {
         trialRawData = data
     }
     
+    func setTrialStatus(isFinishedStatus:Bool)
+    {
+        isFinished = isFinishedStatus
+    }
+    
     func getRawData() -> [rawData]?{
         return trialRawData
     }

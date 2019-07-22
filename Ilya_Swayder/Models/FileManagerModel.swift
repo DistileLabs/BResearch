@@ -8,10 +8,12 @@
 
 import Foundation
 import UIKit
+import GoogleAPIClientForREST
 
 class ProjectFileManager {
     
-
+    let drive = ATGoogleDrive.getDrive()
+    var drives = [Drive]()
     // Singletone
     private static var projectFileManager: ProjectFileManager = {
         
@@ -31,6 +33,71 @@ class ProjectFileManager {
         return getImageFromDocumentDirectory(userName: userName, folderName: "Utility", "userGoogleImage.png")
     }
     
+    func writeTrialCsvDataToDisc(reasercherName:String, participantName:String, trialName:String, stepName: String, data: String) {
+
+        if let participantDir = getParticipantDir(reasercherName: reasercherName, participantName: participantName) {
+            
+            if let trialDir = setDirectory(dirName: trialName, toPath: participantDir) {
+                
+                let finalUrl = trialDir.appendingPathComponent("\(stepName).csv")
+                
+                do {
+                    try data.write(to: finalUrl, atomically: true, encoding: .utf8)
+                }catch {
+                    print("Write of \(reasercherName)_\(participantName)_\(trialName)_\(stepName) FAILED")
+                }
+            }
+        }
+    }
+
+    func getContentOfUserDir(reasercherName:String, participantName:String) -> [URL]? {
+        if let participantDir = getParticipantDir(reasercherName: reasercherName, participantName: participantName) {
+            
+            let uploadGroup = DispatchGroup()
+            if let dirContents = try? FileManager.default.contentsOfDirectory(at: participantDir, includingPropertiesForKeys: nil) {
+                
+                for dir in dirContents {
+                    
+                   if let trialContent = try? FileManager.default.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil) {
+                    
+                    for file in trialContent {
+                            drive.uploadFile("Swayder", filePath: file.path, MIMEType: "text/csv", onCompleted: ({ (result, error) in
+                                if error != nil {
+                                    print(error as Any)
+                                }
+                                else
+                                {
+                                    print(result as Any)
+                                }
+                            }))
+
+                        }
+
+                    }
+                }
+                print(dirContents)
+                
+                return dirContents
+            }
+        }
+        return nil
+    }
+    
+    func getParticipantDir(reasercherName:String, participantName:String) -> URL? {
+        if let appDir = setDirectory(dirName: "Swayder") {
+        
+            if let reasercherDir = setDirectory(dirName: reasercherName, toPath: appDir) {
+        
+                if let participantDir = setDirectory(dirName: participantName, toPath: reasercherDir) {
+                    
+                    return participantDir
+                }
+            }
+        }
+        return nil
+    }
+
+    
     func saveImageToDocumentDirectory(image: UIImage, userName:String, folderName: String, imageName: String ) {
         if let data = image.pngData() {
             
@@ -45,19 +112,7 @@ class ProjectFileManager {
         }
     }
     
-    func saveCsvFile(data:String, userName:String, csvFolderName: String, csvName: String) {
-        
-        if let userDir = setDirectory(dirName: userName) {
-            
-            if let folderName = setDirectory(dirName: csvFolderName, toPath: userDir) {
-                
-                let fileName = folderName.appendingPathComponent("\(csvName).csv")
-                
-                //try? data.write(to: fileName)
-            }
-        }
-    }
-    
+
     func getImageFromDocumentDirectory(userName:String, folderName: String, _ path: String) -> UIImage? {
         
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -105,7 +160,7 @@ class ProjectFileManager {
         return nil
     }
     
-    func setDirectory(dirName: String) -> URL?{
+    private func setDirectory(dirName: String) -> URL?{
         
         let fileManager = FileManager.default
         
@@ -116,13 +171,13 @@ class ProjectFileManager {
         return nil
     }
     
-    func setDirectory(dirName: String, toPath: URL) -> URL?{
+    private func setDirectory(dirName: String, toPath: URL) -> URL?{
 
            return addDirectory(dirName: dirName, toPath: toPath)
 
         }
 
-    func addDirectory(dirName: String, toPath: URL) -> URL? {
+    private func addDirectory(dirName: String, toPath: URL) -> URL? {
     
         let folderUrl = toPath.appendingPathComponent(dirName)
         
@@ -140,11 +195,23 @@ class ProjectFileManager {
         return folderUrl
     }
     
-    func getDocumentsDirectory() -> URL {
+    private func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
     
-
+    private func saveCsvFile(data:String, userName:String, csvFolderName: String, csvName: String) {
+        
+        if let userDir = setDirectory(dirName: userName) {
+            
+            if let folderName = setDirectory(dirName: csvFolderName, toPath: userDir) {
+                
+                let fileName = folderName.appendingPathComponent("\(csvName).csv")
+                
+                //try? data.write(to: fileName)
+            }
+        }
+    }
+    
     
 }

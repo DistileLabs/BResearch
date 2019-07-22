@@ -92,6 +92,9 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDele
         study.researcherImage = signInModel!.userImage
 
         study.researcherName = signInModel!.givenName + " " + signInModel!.lastName
+        
+        study.reloadList()
+        
         self.present(newViewController, animated: true, completion: nil)
     }
     

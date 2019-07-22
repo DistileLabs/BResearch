@@ -17,6 +17,7 @@ class TestView: UIView {
     @IBOutlet weak var fastForward: UIButton!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var returnButton: UIButton!
     
     let testModel:TestModel = TestModel()
     

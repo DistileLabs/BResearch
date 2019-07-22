@@ -43,6 +43,7 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         testView.navController = navController
         
         testView.name.text = currentPhase.stageName
+
         setTimeForTimer(seconds: Int(currentPhase.waitingPeriod!))
         if (currentPhase.stageName == Get_Ready )
         {
@@ -61,7 +62,8 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         
         testView.pause.addTarget(self, action: #selector(pauseButton), for: .touchUpInside)
         testView.fastForward.addTarget(self, action: #selector(fastForwardButton), for: .touchUpInside)
-       testView.rewind.addTarget(self, action: #selector(rewindButton), for: .touchUpInside)
+        testView.rewind.addTarget(self, action: #selector(rewindButton), for: .touchUpInside)
+        testView.returnButton.addTarget(self, action: #selector(returnToMenu), for: .touchUpInside)
     }
     
     func getData () -> String{
@@ -166,6 +168,10 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
             testView.pause.setImage(UIImage(named: "icons8-pause"), for: .normal)
             runPhase()
         }
+    }
+    
+    @objc func returnToMenu() {
+        navController.popViewController(animated: true)
     }
     
     func pause() {
