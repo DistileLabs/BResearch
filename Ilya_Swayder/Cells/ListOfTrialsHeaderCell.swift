@@ -11,4 +11,7 @@ import UIKit
 
 class ListOfTrialsHeaderCell: UITableViewCell {
     
+    
+    @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var numberLabel: UILabel!
 }

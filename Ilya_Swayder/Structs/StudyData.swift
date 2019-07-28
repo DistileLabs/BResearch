@@ -16,8 +16,8 @@ enum StudyError: Error {
 class StudyData:NSObject,NSCoding {
     
 
-    
     private var paritcipantID: String
+    var isSynced:Bool = false
     
     var SingleLegStance:SingleLegStanceTrial = SingleLegStanceTrial()
     var TUG:TugTrial = TugTrial()

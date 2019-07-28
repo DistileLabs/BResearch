@@ -31,7 +31,9 @@ class TestModel {
                     print(error as Any)
                 } else {
                     
-                    var currentData:String = data.map {"\($0.timestamp)\($0.userAcceleration.x),\($0.userAcceleration.y),\($0.userAcceleration.z),\($0.rotationRate.x),\($0.rotationRate.y),\($0.rotationRate.z),\($0.gravity.x),\($0.gravity.y),\($0.gravity.z),\($0.attitude.pitch),\($0.attitude.yaw),\($0.attitude.roll),\($0.attitude.quaternion.x),\($0.attitude.quaternion.y),\($0.attitude.quaternion.z),\($0.attitude.quaternion.w)"}!
+                    let time = self.stringFromTimeInterval(interval: data!.timestamp)
+                    
+                    var currentData:String = data.map {"\(time)\($0.userAcceleration.x),\($0.userAcceleration.y),\($0.userAcceleration.z),\($0.rotationRate.x),\($0.rotationRate.y),\($0.rotationRate.z),\($0.gravity.x),\($0.gravity.y),\($0.gravity.z),\($0.attitude.pitch),\($0.attitude.yaw),\($0.attitude.roll),\($0.attitude.quaternion.x),\($0.attitude.quaternion.y),\($0.attitude.quaternion.z),\($0.attitude.quaternion.w)"}!
                     
                     currentData.append("\n")
                     
@@ -57,5 +59,16 @@ class TestModel {
     private func initStringData() -> String {
         
         return "Time, Acceleration_X, Acceleration_Y, Acceleration_Z, Rotation_X, Rotation_Y, Rotation_Z, Gravity_X, Gravity_Y, Gravity_Z, Pitch, Yaw, Roll, Quaternion_X,  Quaternion_Y,  Quaternion_Z, Quaternion_W\n"
+    }
+    
+    func stringFromTimeInterval(interval:TimeInterval) -> NSString {
+        
+        let ti = NSInteger(interval)
+        let ms = ti * 1000
+        let seconds = ti % 60
+        let minutes = (ti / 60) % 60
+        let hours = (ti / 3600)
+        
+        return NSString(format: "%0.2d:%0.2d:%0.2d",hours,minutes,seconds,ms)
     }
 }

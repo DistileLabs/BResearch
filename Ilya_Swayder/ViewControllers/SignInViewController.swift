@@ -31,7 +31,7 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDele
         
         GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance()?.delegate = self
-        GIDSignIn.sharedInstance()?.scopes = [kGTLRAuthScopeDrive]
+        GIDSignIn.sharedInstance()?.scopes = [kGTLRAuthScopeDrive,kGTLRAuthScopeDriveFile]
         
         signInModel = projectFileManager.readDataUserDefaults(key:"UserCoreData") as? SignInModel
         if signInModel == nil { signInModel = SignInModel()}

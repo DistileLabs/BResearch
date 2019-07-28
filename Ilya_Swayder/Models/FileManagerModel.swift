@@ -13,7 +13,6 @@ import GoogleAPIClientForREST
 class ProjectFileManager {
     
     let drive = ATGoogleDrive.getDrive()
-    var drives = [Drive]()
     // Singletone
     private static var projectFileManager: ProjectFileManager = {
         
@@ -50,37 +49,41 @@ class ProjectFileManager {
         }
     }
 
-    func getContentOfUserDir(reasercherName:String, participantName:String) -> [URL]? {
+    func getContentOfUserDir(reasercherName:String, participantName:String) -> () {
         if let participantDir = getParticipantDir(reasercherName: reasercherName, participantName: participantName) {
             
-            let uploadGroup = DispatchGroup()
             if let dirContents = try? FileManager.default.contentsOfDirectory(at: participantDir, includingPropertiesForKeys: nil) {
                 
-                for dir in dirContents {
+                // Get folder ID of Swayder/Reasercher/Participant
+                drive.getParticipantPath(reasercherName: reasercherName, participantName: participantName) { (participantFolderId, error) in
+                    if error != nil {
+                        return
+                    }
                     
-                   if let trialContent = try? FileManager.default.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil) {
-                    
-                    for file in trialContent {
-                            drive.uploadFile("Swayder", filePath: file.path, MIMEType: "text/csv", onCompleted: ({ (result, error) in
-                                if error != nil {
-                                    print(error as Any)
+                    for dir in dirContents {
+                        
+                        self.drive.getTrialPath(participantDirId: participantFolderId!, trialName: dir.lastPathComponent, onCompleted: { (folderId, error) in
+                            if error != nil {
+                                return
+                            }
+                            
+                            if let trialContent = try? FileManager.default.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil) {
+                                
+                                for file in trialContent {
+                                    
+                                    self.drive.upload(folderId!, path: file.path, MIMEType: "text/csv", onCompleted: ({ (result, error) in
+                                        if error != nil {
+                                            print("Upload failed")
+                                            return
+                                        }
+                                    }))
                                 }
-                                else
-                                {
-                                    print(result as Any)
-                                }
-                            }))
-
-                        }
-
+                            }
+                        })
                     }
                 }
-                print(dirContents)
-                
-                return dirContents
             }
         }
-        return nil
     }
     
     func getParticipantDir(reasercherName:String, participantName:String) -> URL? {

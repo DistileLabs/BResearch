@@ -45,7 +45,8 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         testView.name.text = currentPhase.stageName
 
         setTimeForTimer(seconds: Int(currentPhase.waitingPeriod!))
-        if (currentPhase.stageName == Get_Ready )
+        let phasePreFix = String((currentPhase.stageName?.prefix(9))!)
+        if (phasePreFix == Get_Ready )
         {
             testView.name.backgroundColor = UIColor.init(red: 23.0/255, green: 72.0/255, blue: 111.0/255, alpha: 1)
             testView.pause.isHidden = false
@@ -79,9 +80,10 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
     func runTimer() {
         
         if timer == nil {
-            testView.timerLabel.text = String(timerSeconds)//timeString(time: TimeInterval(timerSeconds))
+            testView.timerLabel.text = String(timerSeconds)
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
-            if currentPhase.stageName != Get_Ready {
+            let phasePreFix = String((currentPhase.stageName?.prefix(9))!)
+            if phasePreFix != Get_Ready {
                 testView.testModel.startDeviceMotion(withRestart: isPaused)
             }
         }
@@ -217,5 +219,10 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         }
         
         return nil
+    }
+    
+    func clearRawData() {
+        
+        trialRawData.removeAll()
     }
 }

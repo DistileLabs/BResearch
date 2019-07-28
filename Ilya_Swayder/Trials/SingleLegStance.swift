@@ -13,12 +13,12 @@ class SingleLegStanceTrial: Trial {
     
     let waitingPeriod = 5
 
-    init(newName: String = "Single Leg Stance", flow:[TrialSetup] = [TrialSetup(name: "Get Ready", waitPeriod: 5, stageNum: 0),
-                                               TrialSetup(name: "First stage", waitPeriod: 5, stageNum: 1),
-                                               TrialSetup(name: "Get Ready", waitPeriod: 5, stageNum: 2),
-                                               TrialSetup(name: "Second stage", waitPeriod: 5, stageNum: 3),
-                                               TrialSetup(name: "Get Ready", waitPeriod: 5, stageNum: 4),
-                                               TrialSetup(name: "Last stage", waitPeriod: 5, stageNum: 5),]) {
+    init(newName: String = "Single Leg Stance", flow:[TrialSetup] = [TrialSetup(name: "Get Ready for SLS1", waitPeriod: 1, stageNum: 0),
+                                               TrialSetup(name: "SLS1", waitPeriod: 1, stageNum: 1),
+                                               TrialSetup(name: "Get Ready for SLS2", waitPeriod: 1, stageNum: 2),
+                                               TrialSetup(name: "SLS2", waitPeriod: 1, stageNum: 3),
+                                               TrialSetup(name: "Get Ready SLS3", waitPeriod: 1, stageNum: 4),
+                                               TrialSetup(name: "SLS3", waitPeriod: 1, stageNum: 5),]) {
         super.init()
         name = newName
         
