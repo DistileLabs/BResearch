@@ -25,8 +25,7 @@ class rawData: NSObject, NSCoding {
     
     required convenience init(coder aDecoder: NSCoder) {
         let stageD = aDecoder.decodeObject(forKey: "stageData") as! String
-        let stageNum = aDecoder.decodeInteger(forKey: "stageNumber")
-        
+        let stageNum = aDecoder.decodeObject(forKey: "stageNumber") as! Int
         self.init(addStageNumber: stageNum, addStageData:stageD)
     }
     

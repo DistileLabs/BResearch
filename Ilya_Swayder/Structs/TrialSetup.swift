@@ -28,8 +28,8 @@ class TrialSetup: NSObject, NSCoding {
     
     required convenience init(coder aDecoder: NSCoder) {
         let stageN = aDecoder.decodeObject(forKey: "stageName") as! String
-        let waitP = aDecoder.decodeInteger(forKey: "waitingPeriod")
-        let stageNum = aDecoder.decodeInteger(forKey: "stageNumber")
+        let waitP = aDecoder.decodeObject(forKey: "waitingPeriod") as! Int
+        let stageNum = aDecoder.decodeObject(forKey: "stageNumber") as! Int
         
         self.init(name: stageN, waitPeriod: waitP, stageNum: stageNum)
     }

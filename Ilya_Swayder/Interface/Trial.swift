@@ -8,13 +8,38 @@
 
 import Foundation
 
-class Trial {
+class Trial:NSObject, NSCoding{
     
     var name:String = ""
     var isFinished:Bool = false
     var trialFlow:[TrialSetup]?
     var trialRawData:[rawData]?
  
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: "trialName")
+        aCoder.encode(isFinished, forKey: "isFinished")
+        aCoder.encode(trialFlow, forKey: "flow")
+        aCoder.encode(trialRawData, forKey: "data")
+        
+    }
+
+    required convenience init(coder aDecoder: NSCoder) {
+        let trialName = aDecoder.decodeObject(forKey: "trialName") as! String
+        let finishStatus = aDecoder.decodeBool(forKey: "isFinished")
+        let tFlow = aDecoder.decodeObject(forKey: "flow") as! [TrialSetup]
+        let data = aDecoder.decodeObject(forKey: "data") as! [rawData]
+
+        self.init(trialName:trialName, flow:tFlow, status: finishStatus)
+
+        trialRawData = data
+    }
+    
+    init(trialName:String, flow:[TrialSetup], status:Bool) {
+        
+        name = trialName
+        trialFlow = flow
+        isFinished = status
+    }
     
     func run() {
         print("Fool its interface in Swift")

@@ -117,7 +117,8 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     func nextMove() {
-        if currentPhase.stageName != Get_Ready {
+        let phasePreFix = String((currentPhase.stageName?.prefix(9))!)
+        if phasePreFix != Get_Ready {
             collectData()
         }
         stageNumber += 1
@@ -199,7 +200,8 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
                 
                 let flow = currentTrial.trialFlow!
                 
-                if flow[stage].stageName == Get_Ready {
+                let phasePreFix = String((flow[stage].stageName?.prefix(9))!)
+                if phasePreFix == Get_Ready {
                     
                     return stage
                 }
@@ -207,13 +209,17 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         }
         else
         {
-            for stage in ((stageNumber + 1)...(currentTrial.trialFlow!.count - 1)) {
+            if (stageNumber + 1) < (currentTrial.trialFlow!.count - 1) {
                 
-                let flow = currentTrial.trialFlow!
-                
-                if flow[stage].stageName == Get_Ready {
+                for stage in ((stageNumber + 1)...(currentTrial.trialFlow!.count - 1)) {
                     
-                    return stage
+                    let flow = currentTrial.trialFlow!
+                    
+                    let phasePreFix = String((flow[stage].stageName?.prefix(9))!)
+                    if phasePreFix == Get_Ready {
+                        
+                        return stage
+                    }
                 }
             }
         }

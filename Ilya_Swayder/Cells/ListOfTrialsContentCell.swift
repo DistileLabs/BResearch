@@ -21,7 +21,7 @@ class ListOfTrialsContentCell: UITableViewCell {
         timeAndDateLabel.text = timeAndDate
         uniqueIdLabel.text = ID
         trialsLabel.text = trialsLabels
-        optionPressLabel.isHidden = shouldBePresseble == true ? true : false
+        optionPressLabel.isHidden = shouldBePresseble != true ? true : false
         
         
     }

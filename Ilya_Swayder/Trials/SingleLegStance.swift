@@ -19,9 +19,19 @@ class SingleLegStanceTrial: Trial {
                                                TrialSetup(name: "SLS2", waitPeriod: 1, stageNum: 3),
                                                TrialSetup(name: "Get Ready SLS3", waitPeriod: 1, stageNum: 4),
                                                TrialSetup(name: "SLS3", waitPeriod: 1, stageNum: 5),]) {
-        super.init()
-        name = newName
+        super.init(trialName: newName, flow: flow, status: false)
+    }
+    
+    required convenience init(coder aDecoder: NSCoder) {
+        //let trialName = aDecoder.decodeObject(forKey: "trialName") as! String
+        let finishStatus = aDecoder.decodeBool(forKey: "isFinished")
+        let tFlow = aDecoder.decodeObject(forKey: "flow") as! [TrialSetup]
+        let data = aDecoder.decodeObject(forKey: "data") as? [rawData]
         
-        trialFlow = flow
+        self.init()
+        
+        isFinished = finishStatus
+        trialFlow = tFlow
+        trialRawData = data
     }
 }

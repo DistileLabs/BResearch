@@ -61,6 +61,7 @@
 		F153742922ECE0EB0020CE91 /* icons8-checkmark@3.png in Resources */ = {isa = PBXBuildFile; fileRef = F153742722ECE0E60020CE91 /* icons8-checkmark@3.png */; };
 		F153743422EE14F90020CE91 /* v@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F153743222EE14F80020CE91 /* v@2x.png */; };
 		F153743522EE14F90020CE91 /* v@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F153743322EE14F90020CE91 /* v@3x.png */; };
+		F153743722EE37C80020CE91 /* promo.png in Resources */ = {isa = PBXBuildFile; fileRef = F153743622EE37C70020CE91 /* promo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +145,7 @@
 		F153742722ECE0E60020CE91 /* icons8-checkmark@3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-checkmark@3.png"; sourceTree = "<group>"; };
 		F153743222EE14F80020CE91 /* v@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "v@2x.png"; sourceTree = "<group>"; };
 		F153743322EE14F90020CE91 /* v@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "v@3x.png"; sourceTree = "<group>"; };
+		F153743622EE37C70020CE91 /* promo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = promo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +256,7 @@
 				F153742722ECE0E60020CE91 /* icons8-checkmark@3.png */,
 				F153742422DFB8790020CE91 /* icons8-play@2x.png */,
 				F14D34E322C7DEF900B18BFA /* icons8-back-white@2x.png */,
+				F153743622EE37C70020CE91 /* promo.png */,
 				F14D34E422C7DEF900B18BFA /* icons8-back-white@3x.png */,
 				F14D34E022C7DE7C00B18BFA /* icons8-back@2x.png */,
 				F14D34DF22C7DE7C00B18BFA /* icons8-back@3x.png */,
@@ -505,6 +508,7 @@
 				F14D347422C53A4B00B18BFA /* LaunchScreen.storyboard in Resources */,
 				F14D347122C53A4B00B18BFA /* Assets.xcassets in Resources */,
 				F14D34C722C5458700B18BFA /* TestView.xib in Resources */,
+				F153743722EE37C80020CE91 /* promo.png in Resources */,
 				F14D34AF22C53D1300B18BFA /* icons8-pause@2x.png in Resources */,
 				F14D34A422C53CAF00B18BFA /* Main.storyboard in Resources */,
 				F14D34B422C53D1300B18BFA /* icons8-rewind@2x.png in Resources */,

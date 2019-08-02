@@ -179,15 +179,16 @@ class ATGoogleDrive {
         service.executeQuery(query) { (ticket, results, error) in
             
             if parents != nil {
-                let parseResutls = (results as? GTLRDrive_FileList)?.files
+                if let parseResutls = (results as? GTLRDrive_FileList)?.files {
                 
-                for singleResult in parseResutls! {
-                    
-                    for parent in singleResult.parents! {
+                    for singleResult in parseResutls {
                         
-                        if parents! == parent {
-                            onCompleted(singleResult, error)
-                            break;
+                        for parent in singleResult.parents! {
+                            
+                            if parents! == parent {
+                                onCompleted(singleResult, error)
+                                break;
+                            }
                         }
                     }
                 }

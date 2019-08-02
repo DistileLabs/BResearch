@@ -18,25 +18,47 @@ class StudyData:NSObject,NSCoding {
 
     private var paritcipantID: String
     var isSynced:Bool = false
+    var time:String = ""
     
-    var SingleLegStance:SingleLegStanceTrial = SingleLegStanceTrial()
-    var TUG:TugTrial = TugTrial()
-    var TugReliability: TugReliabilityTrial = TugReliabilityTrial()
+    var SingleLegStance:SingleLegStanceTrial!
+    var TUG:TugTrial!
+    var TugReliability: TugReliabilityTrial!
     
-    init(newParticipant id : String) {
-        
+    init(newParticipant id : String, timeAndDate:String, synced:Bool) {
         paritcipantID = id
+        time = timeAndDate
+        isSynced = synced
+        
+        SingleLegStance = SingleLegStanceTrial()
+        TUG = TugTrial()
+        TugReliability = TugReliabilityTrial()
+        
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(paritcipantID, forKey: "paritcipantID")
+        aCoder.encode(time, forKey: "timeAndDate")
+        aCoder.encode(isSynced, forKey: "isSynced")
+        aCoder.encode(SingleLegStance, forKey: "slsCode")
+        aCoder.encode(TUG, forKey: "tugCode")
+        aCoder.encode(TugReliability, forKey: "tugReCode")
     }
     
     
     required convenience init?(coder aDecoder: NSCoder) {
         let participant = aDecoder.decodeObject(forKey: "paritcipantID") as! String
+        let time = aDecoder.decodeObject(forKey: "timeAndDate") as? String ?? "nil"
+        let sync = aDecoder.decodeBool(forKey: "isSynced")
+        let sls = aDecoder.decodeObject(forKey: "slsCode") as? SingleLegStanceTrial
+        let tug = aDecoder.decodeObject(forKey: "tugCode") as? TugTrial
+        let tugRe = aDecoder.decodeObject(forKey: "timeAndDate") as? TugReliabilityTrial
         
-        self.init(newParticipant: participant)
+        self.init(newParticipant: participant, timeAndDate:time, synced:sync)
+        
+        SingleLegStance = sls
+        TUG = tug
+        TugReliability = tugRe
+        
     }
     
     func getName() -> String? {
