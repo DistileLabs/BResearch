@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MobileCoreServices
 
-extension StudyViewController: UIDocumentPickerDelegate, UINavigationControllerDelegate {
+extension StudyViewController: UIDocumentPickerDelegate {
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         // TODO

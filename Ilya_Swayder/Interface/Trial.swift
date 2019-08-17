@@ -14,12 +14,14 @@ class Trial:NSObject, NSCoding{
     var isFinished:Bool = false
     var trialFlow:[TrialSetup]?
     var trialRawData:[rawData]?
+    var audioFileName:String?
  
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: "trialName")
         aCoder.encode(isFinished, forKey: "isFinished")
         aCoder.encode(trialFlow, forKey: "flow")
         aCoder.encode(trialRawData, forKey: "data")
+        aCoder.encode(audioFileName, forKey: "audio")
         
     }
 
@@ -28,17 +30,21 @@ class Trial:NSObject, NSCoding{
         let finishStatus = aDecoder.decodeBool(forKey: "isFinished")
         let tFlow = aDecoder.decodeObject(forKey: "flow") as! [TrialSetup]
         let data = aDecoder.decodeObject(forKey: "data") as! [rawData]
+        let audioFileLoad = aDecoder.decodeObject(forKey: "audio") as? String
 
-        self.init(trialName:trialName, flow:tFlow, status: finishStatus)
+        
+        self.init(trialName:trialName, flow:tFlow, status: finishStatus, audioFile:audioFileLoad!)
 
         trialRawData = data
+
     }
     
-    init(trialName:String, flow:[TrialSetup], status:Bool) {
+    init(trialName:String, flow:[TrialSetup], status:Bool, audioFile:String) {
         
         name = trialName
         trialFlow = flow
         isFinished = status
+        audioFileName = audioFile
     }
     
     func run() {

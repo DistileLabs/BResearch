@@ -10,10 +10,10 @@ import Foundation
 
 class TugTrial: Trial {
     
-    init(newName: String = "TUG", flow:[TrialSetup] = [TrialSetup(name: "Get Ready for TUG trial", waitPeriod: 1, stageNum: 0),
-                                                       TrialSetup(name: "TUG trial", waitPeriod: 1, stageNum: 1),])
+    init(newName: String = "TUG", flow:[TrialSetup] = [TrialSetup(name: "Get Ready for TUG trial", waitPeriod: 30, stageNum: 0),
+                                                       TrialSetup(name: "TUG trial", waitPeriod: 60, stageNum: 1),])
     {
-        super.init(trialName: newName, flow: flow, status: false)
+        super.init(trialName: newName, flow: flow, status: false, audioFile: "tug_with_time")
     }
     
     required convenience init(coder aDecoder: NSCoder) {
@@ -21,11 +21,13 @@ class TugTrial: Trial {
         let finishStatus = aDecoder.decodeBool(forKey: "isFinished")
         let tFlow = aDecoder.decodeObject(forKey: "flow") as! [TrialSetup]
         let data = aDecoder.decodeObject(forKey: "data") as? [rawData]
+        let audioFile = aDecoder.decodeObject(forKey: "audio") as? String
         
         self.init()
         
         isFinished = finishStatus
         trialFlow = tFlow
         trialRawData = data
+        audioFileName = audioFile
     }
 }

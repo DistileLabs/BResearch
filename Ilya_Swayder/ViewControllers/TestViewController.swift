@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CoreMotion
 
+
 class TestViewController: UIViewController, UINavigationControllerDelegate {
 
     var currentTrial:Trial!
@@ -21,7 +22,9 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
     private var trialRawData = [rawData]()
     private var isPaused:Bool = false
     private var currentPhase:TrialSetup!
- 
+    var audioPlayer:swayderAudioPlayer = swayderAudioPlayer()
+
+
     private var Get_Ready:String = "Get Ready"
     
     @IBOutlet var testView: TestView!
@@ -32,13 +35,11 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         totalStages = currentTrial.trialFlow!.count
 
         runPhase()
-
     }
     
     func setupUI()
     {
         currentPhase = currentTrial.trialFlow![stageNumber]
-       
         
         testView.navController = navController
         
@@ -56,7 +57,6 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
             testView.name.backgroundColor = UIColor.init(red: 40.0/255, green: 139.0/255, blue: 39.0/255, alpha: 1)
             testView.pause.isHidden = true
         }
-        
     }
     
     func initButtonsAction() {
@@ -84,7 +84,7 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
             let phasePreFix = String((currentPhase.stageName?.prefix(9))!)
             if phasePreFix != Get_Ready {
-                testView.testModel.startDeviceMotion(withRestart: isPaused)
+                testView.testModel.startDeviceMotion(maxTime: currentPhase.waitingPeriod!)
             }
         }
     }
@@ -95,6 +95,7 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         {
             if timer != nil {
                 timer!.invalidate()
+
                 testView.testModel.stopDeviceMotion()
                 timer = nil
                 nextMove()
@@ -102,9 +103,13 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         }
         else
         {
+ 
+            if timerSeconds == 1{
+               audioPlayer.playAudio(fileName: "beep", fileExtension: "mp3")
+            }
+            scheduleAudioFile(secondsLeft: timerSeconds)
             timerSeconds -= 1
             testView.timerLabel.text = String(timerSeconds)
-            
         }
     }
     
@@ -129,13 +134,13 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         else
         {
             prepareForPop()
-            navController.popToRootViewController(animated: true)
+            navController.popViewController(animated: true)
         }
     }
     
     func prepareForPop() {
         
-        let returnVC = navController.viewControllers.first as! ParticipantViewController
+        let returnVC = navController.viewControllers[navController.viewControllers.count - 2] as! ParticipantViewController
         
         returnVC.returnDataFromTest(testName: currentTrial.getName(), rawDataSet: trialRawData)
         
@@ -152,11 +157,11 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         {
             restart()
         }
-
     }
     
     @objc func fastForwardButton() {
-        if let newStage = searchForClosestGetReadyPhase(fromStart: false) {
+        audioPlayer.stopPlaying()
+        if let newStage = searchForClosestGetReadyPhase(fromStart: false, doubeTap: false) {
             stageNumber = newStage
             pause()
             testView.pause.setImage(UIImage(named: "icons8-pause"), for: .normal)
@@ -165,7 +170,11 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     @objc func rewindButton() {
-        if let newStage = searchForClosestGetReadyPhase(fromStart: true) {
+        audioPlayer.stopPlaying()
+        
+        let isDoubleTap = (currentPhase.waitingPeriod! - 1) <= timerSeconds ? true:false
+        
+        if let newStage = searchForClosestGetReadyPhase(fromStart: true, doubeTap: isDoubleTap) {
             stageNumber = newStage
             pause()
             testView.pause.setImage(UIImage(named: "icons8-pause"), for: .normal)
@@ -174,6 +183,8 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     @objc func returnToMenu() {
+        timer?.invalidate()
+        audioPlayer.stopPlaying()
         navController.popViewController(animated: true)
     }
     
@@ -182,19 +193,22 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         isPaused = true
         timer?.invalidate()
         timer = nil
+        audioPlayer.pauseAudio()
     }
     
     func restart() {
         testView.pause.setImage(UIImage(named: "icons8-pause"), for: .normal)
         isPaused = false
         runTimer()
+        audioPlayer.unpauseAudio()
     }
     
-    func searchForClosestGetReadyPhase (fromStart:Bool) -> Int? {
+    func searchForClosestGetReadyPhase (fromStart:Bool, doubeTap:Bool) -> Int? {
         
         if fromStart == true {
             
             if stageNumber == 0 {return 0}
+            if doubeTap == true {stageNumber -= 1}
             
             for stage in (0...stageNumber).reversed() {
                 
@@ -202,7 +216,6 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
                 
                 let phasePreFix = String((flow[stage].stageName?.prefix(9))!)
                 if phasePreFix == Get_Ready {
-                    
                     return stage
                 }
             }
@@ -223,12 +236,19 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
                 }
             }
         }
-        
         return nil
     }
     
     func clearRawData() {
         
         trialRawData.removeAll()
+    }
+    
+    func scheduleAudioFile(secondsLeft:Int) {
+        let phasePreFix = String((currentPhase.stageName?.prefix(9))!)
+
+        if (secondsLeft == (audioPlayer.audioLengthGe(fileName: currentTrial.audioFileName!, fileExtension: "mp3") + 2) && (phasePreFix == Get_Ready)) {
+            audioPlayer.playAudio(fileName: currentTrial.audioFileName!, fileExtension: "mp3")
+        }
     }
 }

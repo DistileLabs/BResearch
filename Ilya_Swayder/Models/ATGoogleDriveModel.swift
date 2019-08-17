@@ -65,25 +65,7 @@ class ATGoogleDrive {
             onCompleted(result as? GTLRDrive_FileList, error)
         }
     }
-  
-// ORG
-//    public func uploadFile(_ folderName: String, filePath: String, MIMEType: String, onCompleted: ((String?, Error?) -> ())?) {
-//
-//        search(folderName) { (folder, error) in
-//
-//            if let ID = folder {
-//                self.upload(folder!.identifier!, path: filePath, MIMEType: MIMEType, onCompleted: onCompleted)
-//            } else {
-//                self.createFolder(folderName, onCompleted: { (folderID, error) in
-//                    guard let ID = folder else {
-//                        onCompleted?(nil, error)
-//                        return
-//                    }
-//                    self.upload(folder!.identifier!, path: filePath, MIMEType: MIMEType, onCompleted: onCompleted)
-//                })
-//            }
-//        }
-//    }
+
     
     public func uploadFile(_ folderName: String, filePath: String, MIMEType: String, onCompleted: ((String?, Error?) -> ())?) {
     
@@ -92,19 +74,22 @@ class ATGoogleDrive {
     
     public func  getTrialPath(participantDirId: String, trialName:String, onCompleted: ((String?, Error?) -> ())?) {
         
-        self.getDirId(trialName, parentsId: participantDirId, onCompleted: { (finalId, error) in
-            onCompleted?(finalId?.identifier,error)
-            
-            return
+        self.createFolder(trialName, parents: participantDirId, onCompleted: { (newFolderID, error) in
+            if error != nil {
+               // print("Create failed_\(newFolderID), parentID \(parentsId): \(error)")
+            }
+            else {
+                
+                onCompleted!(newFolderID?.identifier, nil)
+            }
         })
-
     }
     
     public func getParticipantPath(reasercherName: String, participantName:String, onCompleted: ((String?, Error?) -> ())?) {
         
-        getDirId("Swayder", parentsId: nil, onCompleted: { (trialFolderId, error) in
+        getDirId("Elderly_survey", parentsId: nil, onCompleted: { (trialFolderId, error) in
             if error != nil {
-                print("Swayder dir_\(String(describing: error))")
+                print("Elderly_survey dir_\(String(describing: error))")
                 return
             }
             
@@ -115,19 +100,38 @@ class ATGoogleDrive {
                     return
                 }
                 
-                self.getDirId(participantName, parentsId: reasercherFolderId!.identifier, onCompleted: { (participantFolderId, error) in
+                self.createFolder(participantName, parents: reasercherFolderId?.identifier, onCompleted: { (newFolderID, error) in
                     if error != nil {
-                        print("Participant dir_\(String(describing: error))")
-                        return
+                        // print("Create failed_\(newFolderID), parentID \(parentsId): \(error)")
                     }
-                    onCompleted?(participantFolderId?.identifier,error)
-                    
-                    return
+                    else {
+                        
+                        onCompleted!(newFolderID?.identifier, nil)
+                    }
                 })
             })
         })
     }
     
+    public func getResearcherPath(reasercherName: String, onCompleted: ((String?, Error?) -> ())?) {
+        
+        getDirId("Elderly_survey", parentsId: nil, onCompleted: { (trialFolderId, error) in
+            if error != nil {
+                print("Elderly_survey dir_\(String(describing: error))")
+                onCompleted!(nil, error)
+            }
+            
+            self.getDirId(reasercherName, parentsId: trialFolderId!.identifier, onCompleted: { (reasercherFolderId, error) in
+                
+                if error != nil {
+                    print("Reasercher dir_\(String(describing: error))")
+                    onCompleted!(nil, error)
+                }
+                
+                onCompleted!(reasercherFolderId?.identifier, error)
+            })
+        })
+    }
     
 
     
@@ -173,27 +177,22 @@ class ATGoogleDrive {
     public func search(_ fileName: String,parents: String?, onCompleted: @escaping (GTLRDrive_File?, Error?) -> ()) {
         let query = GTLRDriveQuery_FilesList.query()
         query.pageSize = 4
-        query.q = "mimeType='application/vnd.google-apps.folder' and name contains '\(fileName)'"
-        query.fields = "files(id,name,parents)"
-        print(fileName)
+        query.q = "mimeType='application/vnd.google-apps.folder' and name contains '\(fileName)' and trashed = false"
+        query.fields = "files(id,name,parents,trashed)"
         service.executeQuery(query) { (ticket, results, error) in
             
             if parents != nil {
                 if let parseResutls = (results as? GTLRDrive_FileList)?.files {
-                
                     for singleResult in parseResutls {
-                        
-                        for parent in singleResult.parents! {
-                            
-                            if parents! == parent {
-                                onCompleted(singleResult, error)
-                                break;
-                            }
+
+                        if let _ = singleResult.parents?.filter({$0 == parents }) {
+                            onCompleted(singleResult, error)
+                            return
                         }
                     }
                 }
             }
-            onCompleted((results as? GTLRDrive_FileList)?.files?.first, error)
+             onCompleted((results as? GTLRDrive_FileList)?.files?.first, error)
         }
     }
     

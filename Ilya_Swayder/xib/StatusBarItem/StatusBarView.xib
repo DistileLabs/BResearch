@@ -24,9 +24,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2Ee-77-52a">
-                    <rect key="frame" x="54" y="41" width="48" height="20"/>
+                    <rect key="frame" x="54" y="35" width="48" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="20" id="1R4-BD-RtC"/>
+                        <constraint firstAttribute="height" constant="30" id="1R4-BD-RtC"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -64,7 +64,7 @@
                 <constraint firstItem="7qe-M0-t3W" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="26" id="hZK-Fq-YnT"/>
                 <constraint firstItem="2Ee-77-52a" firstAttribute="leading" secondItem="g01-76-4wx" secondAttribute="trailing" constant="8" id="oLx-In-XTn"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7qe-M0-t3W" secondAttribute="trailing" constant="16" id="sDy-VX-Uc5"/>
-                <constraint firstItem="2Ee-77-52a" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="41" id="wGy-GE-RxZ"/>
+                <constraint firstItem="2Ee-77-52a" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="wGy-GE-RxZ"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>

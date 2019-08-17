@@ -62,6 +62,11 @@
 		F153743422EE14F90020CE91 /* v@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F153743222EE14F80020CE91 /* v@2x.png */; };
 		F153743522EE14F90020CE91 /* v@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F153743322EE14F90020CE91 /* v@3x.png */; };
 		F153743722EE37C80020CE91 /* promo.png in Resources */ = {isa = PBXBuildFile; fileRef = F153743622EE37C70020CE91 /* promo.png */; };
+		F153743922F9E1FF0020CE91 /* uploadCounterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153743822F9E1FF0020CE91 /* uploadCounterModel.swift */; };
+		F153743D22FDE0C20020CE91 /* sls_with_time.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F153743C22FDE0C10020CE91 /* sls_with_time.mp3 */; };
+		F153743F22FDE51D0020CE91 /* tug_with_time.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F153743E22FDE51D0020CE91 /* tug_with_time.mp3 */; };
+		F1537441230077F30020CE91 /* swayderAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1537440230077F30020CE91 /* swayderAudioPlayer.swift */; };
+		F1537443230080300020CE91 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1537442230080300020CE91 /* beep.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +151,11 @@
 		F153743222EE14F80020CE91 /* v@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "v@2x.png"; sourceTree = "<group>"; };
 		F153743322EE14F90020CE91 /* v@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "v@3x.png"; sourceTree = "<group>"; };
 		F153743622EE37C70020CE91 /* promo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = promo.png; sourceTree = "<group>"; };
+		F153743822F9E1FF0020CE91 /* uploadCounterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadCounterModel.swift; sourceTree = "<group>"; };
+		F153743C22FDE0C10020CE91 /* sls_with_time.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sls_with_time.mp3; sourceTree = "<group>"; };
+		F153743E22FDE51D0020CE91 /* tug_with_time.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tug_with_time.mp3; sourceTree = "<group>"; };
+		F1537440230077F30020CE91 /* swayderAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swayderAudioPlayer.swift; sourceTree = "<group>"; };
+		F1537442230080300020CE91 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +259,9 @@
 		F14D34B522C53D2400B18BFA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F153743C22FDE0C10020CE91 /* sls_with_time.mp3 */,
+				F1537442230080300020CE91 /* beep.mp3 */,
+				F153743E22FDE51D0020CE91 /* tug_with_time.mp3 */,
 				F153742222DFB8730020CE91 /* icons8-play@3x.png */,
 				F153742622ECE0E60020CE91 /* icons8-checkmark@2.png */,
 				F153743222EE14F80020CE91 /* v@2x.png */,
@@ -347,6 +360,8 @@
 				F14D350322D4F9FC00B18BFA /* ReachabilityModel.swift */,
 				F14D350722D64CA100B18BFA /* TestModel.swift */,
 				F14D350E22DB9F7400B18BFA /* ATGoogleDriveModel.swift */,
+				F153743822F9E1FF0020CE91 /* uploadCounterModel.swift */,
+				F1537440230077F30020CE91 /* swayderAudioPlayer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -514,10 +529,13 @@
 				F14D34B422C53D1300B18BFA /* icons8-rewind@2x.png in Resources */,
 				F14D34B122C53D1300B18BFA /* icons8-rewind@3x.png in Resources */,
 				F14D34E222C7DE7C00B18BFA /* icons8-back@2x.png in Resources */,
+				F153743D22FDE0C20020CE91 /* sls_with_time.mp3 in Resources */,
 				F14D34C322C5457100B18BFA /* StatusBarView.xib in Resources */,
 				F153743422EE14F90020CE91 /* v@2x.png in Resources */,
 				F14D34E522C7DEF900B18BFA /* icons8-back-white@2x.png in Resources */,
 				F14D34E122C7DE7C00B18BFA /* icons8-back@3x.png in Resources */,
+				F1537443230080300020CE91 /* beep.mp3 in Resources */,
+				F153743F22FDE51D0020CE91 /* tug_with_time.mp3 in Resources */,
 				F153743522EE14F90020CE91 /* v@3x.png in Resources */,
 				F153742922ECE0EB0020CE91 /* icons8-checkmark@3.png in Resources */,
 				F153742522DFB8790020CE91 /* icons8-play@2x.png in Resources */,
@@ -625,10 +643,12 @@
 				F14D350622D50A6000B18BFA /* TestViewController.swift in Sources */,
 				F14D34C222C5457100B18BFA /* StatusBarView.swift in Sources */,
 				F14D350D22D79EFA00B18BFA /* Trial.swift in Sources */,
+				F1537441230077F30020CE91 /* swayderAudioPlayer.swift in Sources */,
 				F14D34FB22CD41A400B18BFA /* SignInModel.swift in Sources */,
 				F14D34D422C545E900B18BFA /* TUG.swift in Sources */,
 				F14D34A622C53CD700B18BFA /* AppDelegate.swift in Sources */,
 				F14D34CB22C545BA00B18BFA /* SignInViewController.swift in Sources */,
+				F153743922F9E1FF0020CE91 /* uploadCounterModel.swift in Sources */,
 				F14D34EB22C91D4100B18BFA /* StudyModel.swift in Sources */,
 				F14D34F522CBC12100B18BFA /* ListOfTrialsHeaderCell.swift in Sources */,
 				F14D34F222CA82D400B18BFA /* ListOfTrialsTableViewController.swift in Sources */,

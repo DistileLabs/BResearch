@@ -13,116 +13,108 @@ import GoogleAPIClientForREST
 import GTMSessionFetcher
 
 
-class SignInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
+class SignInViewController: UIViewController,UINavigationControllerDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
     
-    @IBOutlet weak var fuckingImage: UIImageView!
     @IBOutlet weak var continueToModelOutlet: UIButton!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     var userSigned:GIDGoogleUser?
     var signInModel:SignInModel?
-    let study:Study = Study.getStudy()
+    let studyProperties:Study = Study.getStudy()
     let projectFileManager = ProjectFileManager.getFileManager()
     fileprivate let service = GTLRDriveService()
     var drive:ATGoogleDrive = ATGoogleDrive.getDrive()
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        
+        self.navigationController?.delegate = self
         
         GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.scopes = [kGTLRAuthScopeDrive,kGTLRAuthScopeDriveFile]
         
-        signInModel = projectFileManager.readDataUserDefaults(key:"UserCoreData") as? SignInModel
-        if signInModel == nil { signInModel = SignInModel()}
-        
-       if (GIDSignIn.sharedInstance()?.hasAuthInKeychain())! {
-            
-        GIDSignIn.sharedInstance()?.signInSilently()
-       }
-        
+//        signInModel = projectFileManager.readDataUserDefaults(key:"UserCoreData") as? SignInModel
+//        if signInModel == nil { signInModel = SignInModel()}
         if Reachability.isConnectedToNetwork() != true {
+            studyProperties.reloadList()
             continueToStudy()
         }
         
-        addGoogleSignInButton()
+       if (GIDSignIn.sharedInstance()?.hasAuthInKeychain())! {
+        self.spinner.startAnimating()//self.spinnerAction(shouldSpin: true)
+        GIDSignIn.sharedInstance()?.signInSilently()
+       }
+       else {
+            addGoogleSignInButton()
+       }
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
      
+        if user == nil {
+            return // Maybe pop error message
+        }
+        
+        spinner.startAnimating()//self.spinnerAction(shouldSpin: true)
         service.authorizer = user.authentication.fetcherAuthorizer()
         drive.addDriveService(serv: service)
-        self.spinnerAction(shouldSpin: true)
         userSigned = user
+ 
+        studyProperties.reloadList()
         
-        if user != nil
+        if studyProperties.researcherEmail != user.profile.email
         {
-            if signInModel!.givenName != user.profile.givenName
-            {
+            let group = DispatchGroup()
+            group.enter()
+            DispatchQueue.main.async {
+ 
                 URLSession.shared.dataTask(with: user.profile.imageURL(withDimension: 100)) { (data, response, error) in
                     if error != nil {
                         print(error as Any)
                         return
                     }
-                    
-                    DispatchQueue.main.async {
-                        self.projectFileManager.saveImageToDocumentDirectory(image: UIImage(data: data!)!, userName: user.profile.familyName, folderName: "Utility", imageName: "userGoogleImage.png")
-                        self.signInModel!.saveSignedInUser(newUser: user)
+                    let newGivenName = self.userSigned?.profile?.givenName ?? ""
+                    let newFamilyName =  self.userSigned?.profile?.familyName ?? ""
+                    let newEmail = self.userSigned?.profile.email
+                    let newImage = UIImage(data: data!)
+                    self.studyProperties.studyParamsSet(newResearcherName: newGivenName + " " + newFamilyName , image: newImage, newResearcherEmail: newEmail!)
 
-                        self.projectFileManager.writeDataUserDefaults(dataToWrite: self.signInModel!, key: "UserCoreData")
-                        self.fuckingImage.image = self.signInModel!.userImage
-                        self.spinnerAction(shouldSpin: false)
-                        self.continueToStudy()
-                    }
+                    group.leave()
+                    
                 }.resume()
             }
-            else
-            {
-                self.spinnerAction(shouldSpin: false)
+            group.notify(queue: .main) {
                 self.continueToStudy()
             }
+        }
+        else
+        {
+            self.continueToStudy()
         }
     }
     
     func continueToStudy() {
-        
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "StudyViewController") as! StudyViewController
-  
-        study.researcherImage = signInModel!.userImage
+        newViewController.navController = self.navigationController
+        self.spinner.stopAnimating()//self.spinnerAction(shouldSpin: true)
+        self.navigationController?.pushViewController(newViewController, animated: true)
 
-        study.researcherName = signInModel!.givenName + " " + signInModel!.lastName
-        
-        study.reloadList()
-        
-        self.present(newViewController, animated: true, completion: nil)
     }
     
     private func addGoogleSignInButton()
     {
-        let signInButton = GIDSignInButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 20, height: 48))
+        let signInButton = GIDSignInButton(frame: CGRect(x: 0, y: -100, width: UIScreen.main.bounds.width - 200 , height: 100))
         
         signInButton.center = view.center
         
         view.addSubview(signInButton)
     }
-
-    func spinnerAction(shouldSpin status: Bool) {
-        if status == true {
-            
-            spinner.isHidden = false
-            spinner.startAnimating()
-        }
-        else
-        {
-            spinner.isHidden = true
-            spinner.stopAnimating()
-        }
-    }
     
     func signOutUser() {
         GIDSignIn.sharedInstance()?.signOut()
-        self.signInModel?.clearUser()
+        studyProperties.saveStudyModelForReaercher()
+        addGoogleSignInButton()
     }
 }
 

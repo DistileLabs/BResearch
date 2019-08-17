@@ -19,6 +19,7 @@ class StudyData:NSObject,NSCoding {
     private var paritcipantID: String
     var isSynced:Bool = false
     var time:String = ""
+    var numberOfDataFiles:Int = 0
     
     var SingleLegStance:SingleLegStanceTrial!
     var TUG:TugTrial!
@@ -42,6 +43,7 @@ class StudyData:NSObject,NSCoding {
         aCoder.encode(SingleLegStance, forKey: "slsCode")
         aCoder.encode(TUG, forKey: "tugCode")
         aCoder.encode(TugReliability, forKey: "tugReCode")
+        aCoder.encode(numberOfDataFiles, forKey: "numberOfDataFiles")
     }
     
     
@@ -49,6 +51,7 @@ class StudyData:NSObject,NSCoding {
         let participant = aDecoder.decodeObject(forKey: "paritcipantID") as! String
         let time = aDecoder.decodeObject(forKey: "timeAndDate") as? String ?? "nil"
         let sync = aDecoder.decodeBool(forKey: "isSynced")
+        let numberOfFiles = aDecoder.decodeInteger(forKey: "numberOfDataFiles")
         let sls = aDecoder.decodeObject(forKey: "slsCode") as? SingleLegStanceTrial
         let tug = aDecoder.decodeObject(forKey: "tugCode") as? TugTrial
         let tugRe = aDecoder.decodeObject(forKey: "timeAndDate") as? TugReliabilityTrial
@@ -58,6 +61,7 @@ class StudyData:NSObject,NSCoding {
         SingleLegStance = sls
         TUG = tug
         TugReliability = tugRe
+        numberOfDataFiles = numberOfFiles
         
     }
     
