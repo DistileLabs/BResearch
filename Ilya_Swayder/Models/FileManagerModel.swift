@@ -93,6 +93,8 @@ class ProjectFileManager {
             completion(true)
         }
         
+        var firstFail:Bool = true
+        
         drive.getResearcherPath(reasercherName: name, onCompleted: ({ (researcherFolderId, error) in
             if error != nil {
                 print("Failed to get participant path")
@@ -125,7 +127,10 @@ class ProjectFileManager {
                 	
                                             self.drive.upload(folderId!, path: file.path, MIMEType: "text/csv", onCompleted: ({ (result, error) in
                                                 if error != nil {
-                                                    completion(false)
+                                                    if firstFail == true {
+                                                        firstFail = false
+                                                        completion(false)
+                                                    }
                                                     return
                                                 }
                                                let numberOfLeftFiles = self.fileCounter.decrementFile()

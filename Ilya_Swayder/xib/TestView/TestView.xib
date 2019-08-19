@@ -43,14 +43,6 @@
                     </constraints>
                     <state key="normal" title="Button" image="icons8-rewind.png"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YEn-zM-I8y">
-                    <rect key="frame" x="162.66666666666666" y="718" width="50" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="TmL-NA-Kjr"/>
-                        <constraint firstAttribute="width" constant="50" id="VeT-oK-HTI"/>
-                    </constraints>
-                    <state key="normal" title="Button" image="icons8-pause.png"/>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jg5-eY-dtc">
                     <rect key="frame" x="309" y="718" width="50" height="50"/>
                     <constraints>
@@ -77,6 +69,14 @@
                     </constraints>
                     <state key="normal" title="Button" image="icons8-back-white.png"/>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YEn-zM-I8y">
+                    <rect key="frame" x="162.66666666666666" y="503" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="TmL-NA-Kjr"/>
+                        <constraint firstAttribute="width" constant="50" id="VeT-oK-HTI"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="icons8-pause.png"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -85,7 +85,7 @@
                 <constraint firstItem="YEn-zM-I8y" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Lc1-3k-CeV"/>
                 <constraint firstItem="BNK-Sf-kmc" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Q3s-Mx-56t"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Jg5-eY-dtc" secondAttribute="trailing" constant="16" id="QjS-jY-1ok"/>
-                <constraint firstItem="YEn-zM-I8y" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-10" id="UZz-x4-Ql0"/>
+                <constraint firstItem="YEn-zM-I8y" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-225" id="UZz-x4-Ql0"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BNK-Sf-kmc" secondAttribute="trailing" id="V0w-hI-yyv"/>
                 <constraint firstItem="2lT-8y-fNt" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="aed-F9-eYg"/>
                 <constraint firstItem="Dsg-fw-3y4" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-10" id="bbh-at-c2g"/>

@@ -323,19 +323,30 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPd-Zx-b0q">
+                                                    <rect key="frame" x="0.0" y="1" width="15" height="57.666666666666664"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="15" id="Fv2-zQ-uDP"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Ubq-3E-P9C" firstAttribute="leading" secondItem="Ren-Nc-k9C" secondAttribute="leading" constant="31" id="5GT-cx-VI3"/>
                                                 <constraint firstItem="KCM-Hh-D74" firstAttribute="top" secondItem="Ren-Nc-k9C" secondAttribute="topMargin" id="8w7-xx-juP"/>
+                                                <constraint firstItem="SPd-Zx-b0q" firstAttribute="top" secondItem="Ren-Nc-k9C" secondAttribute="top" constant="1" id="EVU-Sb-c0i"/>
                                                 <constraint firstItem="KCM-Hh-D74" firstAttribute="leading" secondItem="Ren-Nc-k9C" secondAttribute="leadingMargin" constant="16" id="NjV-cP-XxG"/>
                                                 <constraint firstItem="Ubq-3E-P9C" firstAttribute="top" secondItem="KCM-Hh-D74" secondAttribute="bottom" id="V7L-e9-gLr"/>
                                                 <constraint firstItem="EvE-ue-tho" firstAttribute="centerY" secondItem="Ren-Nc-k9C" secondAttribute="centerY" id="Wa5-bT-5VI"/>
+                                                <constraint firstAttribute="bottom" secondItem="SPd-Zx-b0q" secondAttribute="bottom" constant="1" id="ZES-pd-2KJ"/>
+                                                <constraint firstItem="SPd-Zx-b0q" firstAttribute="leading" secondItem="Ren-Nc-k9C" secondAttribute="leading" id="aoV-rc-uQd"/>
                                                 <constraint firstItem="EvE-ue-tho" firstAttribute="leading" secondItem="sNe-C1-8tF" secondAttribute="trailing" constant="5" id="mwK-LN-hMq"/>
                                                 <constraint firstItem="sNe-C1-8tF" firstAttribute="centerY" secondItem="Ren-Nc-k9C" secondAttribute="centerY" id="nDF-Xq-vCY"/>
                                                 <constraint firstAttribute="trailing" secondItem="EvE-ue-tho" secondAttribute="trailing" constant="16" id="vhw-kf-ZbV"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="isSyncedView" destination="SPd-Zx-b0q" id="krD-eg-mky"/>
                                             <outlet property="optionPressLabel" destination="sNe-C1-8tF" id="g0J-Tj-77v"/>
                                             <outlet property="timeAndDateLabel" destination="EvE-ue-tho" id="MOR-WS-RgS"/>
                                             <outlet property="trialsLabel" destination="Ubq-3E-P9C" id="BSS-8E-i3w"/>

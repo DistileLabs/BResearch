@@ -11,12 +11,12 @@ import UIKit
 
 class SingleLegStanceTrial: Trial {
 
-    init(newName: String = "Single Leg Stance", flow:[TrialSetup] = [TrialSetup(name: "Get Ready for SLS1", waitPeriod: 30, stageNum: 0),
-                                               TrialSetup(name: "SLS1", waitPeriod: 45, stageNum: 1),
-                                               TrialSetup(name: "Get Ready for SLS2", waitPeriod: 60, stageNum: 2),
-                                               TrialSetup(name: "SLS2", waitPeriod: 45, stageNum: 3),
-                                               TrialSetup(name: "Get Ready SLS3", waitPeriod: 60, stageNum: 4),
-                                               TrialSetup(name: "SLS3", waitPeriod: 45, stageNum: 5),]) {
+    init(newName: String = "Single Leg Stance", flow:[TrialSetup] = [TrialSetup(name: "Get Ready for SLS1", waitPeriod: 10, stageNum: 0),
+                                               TrialSetup(name: "SLS1", waitPeriod: 10, stageNum: 1),
+                                               TrialSetup(name: "Get Ready for SLS2", waitPeriod: 10, stageNum: 2),
+                                               TrialSetup(name: "SLS2", waitPeriod: 10, stageNum: 3),
+                                               TrialSetup(name: "Get Ready SLS3", waitPeriod: 10, stageNum: 4),
+                                               TrialSetup(name: "SLS3", waitPeriod: 10, stageNum: 5),]) {
         super.init(trialName: newName, flow: flow, status: false, audioFile: "sls_with_time")
     }
     //, audioFile:"sls_with_time"

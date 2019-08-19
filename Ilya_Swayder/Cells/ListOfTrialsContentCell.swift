@@ -15,14 +15,24 @@ class ListOfTrialsContentCell: UITableViewCell {
     @IBOutlet weak var uniqueIdLabel: UILabel!
     @IBOutlet weak var trialsLabel: UILabel!
     @IBOutlet weak var optionPressLabel: UILabel!
+    @IBOutlet weak var isSyncedView: UIView!
     
-    func populateCell(timeAndDate:String, ID:String, trialsLabels:String, shouldBePresseble:Bool) {
+    func populateCell(timeAndDate:String, ID:String, trialsLabels:String, shouldBePresseble:Bool, isSynced:Bool) {
         
         timeAndDateLabel.text = timeAndDate
         uniqueIdLabel.text = ID
         trialsLabel.text = trialsLabels
         optionPressLabel.isHidden = shouldBePresseble != true ? true : false
         
+        if isSynced == true {
+            isSyncedView.backgroundColor = UIColor(red: 4.0/255.0, green: 107.0/255.0, blue: 198.0/255.0, alpha: 1)
+        }
+        else if optionPressLabel.isHidden == false {
         
+            isSyncedView.backgroundColor = UIColor.white
+        }
+        else {
+            isSyncedView.backgroundColor = UIColor(red: 218.0/255.0, green: 218.0/255.0, blue: 218.0/255.0, alpha: 1)
+        }
     }
 }

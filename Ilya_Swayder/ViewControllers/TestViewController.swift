@@ -11,6 +11,7 @@ import UIKit
 import CoreMotion
 
 
+
 class TestViewController: UIViewController, UINavigationControllerDelegate {
 
     var currentTrial:Trial!
@@ -37,6 +38,14 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         runPhase()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.isIdleTimerDisabled = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        UIApplication.shared.isIdleTimerDisabled = false
+    }
+    
     func setupUI()
     {
         currentPhase = currentTrial.trialFlow![stageNumber]
@@ -50,12 +59,14 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         if (phasePreFix == Get_Ready )
         {
             testView.name.backgroundColor = UIColor.init(red: 23.0/255, green: 72.0/255, blue: 111.0/255, alpha: 1)
-            testView.pause.isHidden = false
+            testView.pause.alpha = 1
+            testView.pause.isEnabled = true
         }
         else
         {
             testView.name.backgroundColor = UIColor.init(red: 40.0/255, green: 139.0/255, blue: 39.0/255, alpha: 1)
-            testView.pause.isHidden = true
+            testView.pause.alpha = 0.5
+            testView.pause.isEnabled = false
         }
     }
     
@@ -118,7 +129,7 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     func collectData() {
-        trialRawData.append(rawData(addStageNumber: stageNumber, addStageData: getData()))
+        trialRawData.append(rawData(addStageNumber: getDataStageNumber(stageNum: stageNumber), addStageData: getData()))
     }
     
     func nextMove() {
@@ -133,16 +144,17 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         }
         else
         {
-            prepareForPop()
-            navController.popViewController(animated: true)
+            endTrial()
         }
     }
     
-    func prepareForPop() {
+    func endTrial() {
         
         let returnVC = navController.viewControllers[navController.viewControllers.count - 2] as! ParticipantViewController
         
         returnVC.returnDataFromTest(testName: currentTrial.getName(), rawDataSet: trialRawData)
+        
+        navController.popViewController(animated: true)
         
         return
     }
@@ -161,11 +173,20 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
     
     @objc func fastForwardButton() {
         audioPlayer.stopPlaying()
+        let phasePreFix = String((currentPhase.stageName?.prefix(9))!)
+        if phasePreFix != Get_Ready {
+            collectData()
+        }
         if let newStage = searchForClosestGetReadyPhase(fromStart: false, doubeTap: false) {
             stageNumber = newStage
             pause()
             testView.pause.setImage(UIImage(named: "icons8-pause"), for: .normal)
             runPhase()
+        }
+        else {
+            timer?.invalidate()
+            testView.testModel.stopDeviceMotion()
+            endTrial()
         }
     }
     
@@ -183,9 +204,24 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     @objc func returnToMenu() {
-        timer?.invalidate()
-        audioPlayer.stopPlaying()
-        navController.popViewController(animated: true)
+        let phasePreFix = String((currentPhase.stageName?.prefix(9))!)
+        if phasePreFix == Get_Ready {
+            pause()
+        }
+        let alert = UIAlertController(title: "Discard Trial ?", message: "Discarding trial would delete any progress made", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+            self.timer?.invalidate()
+            self.audioPlayer.stopPlaying()
+            self.navController.popViewController(animated: true)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action) in
+            if phasePreFix == self.Get_Ready {
+                self.restart()
+            }
+        }))
+        
+        self.present(alert, animated: true)
     }
     
     func pause() {
@@ -250,5 +286,41 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         if (secondsLeft == (audioPlayer.audioLengthGe(fileName: currentTrial.audioFileName!, fileExtension: "mp3") + 2) && (phasePreFix == Get_Ready)) {
             audioPlayer.playAudio(fileName: currentTrial.audioFileName!, fileExtension: "mp3")
         }
+    }
+    
+    func getDataStageNumber(stageNum:Int) -> Int{
+        
+        var number:Int = 0
+        
+        switch(stageNum) {
+            
+            case 1:
+                number = 1
+                break
+            case 2:
+                number = 2
+            case 3:
+                number = 2
+                break
+            case 4:
+                number = 3
+            case 5:
+                number = 3
+                break
+            case 6:
+                number = 4
+            case 7:
+                number = 4
+            case 8:
+                number = 5
+            case 9:
+                number = 6
+            case 10:
+                number = 6
+        default:
+            return number
+        }
+        
+        return number
     }
 }
