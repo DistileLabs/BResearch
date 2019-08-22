@@ -44,8 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             let givenName = user.profile.givenName
             let familyName = user.profile.familyName
             let email = user.profile.email
-            
-            print(fullName)
+
             
             
         }
@@ -63,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     
     func applicationWillResignActive(_ application: UIApplication) {
-        study.saveStudyModelForReaercher()
+        
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -79,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        study.saveStudyModelForReaercher()
+       // study.saveStudyModelForReaercher()
     }
 
 

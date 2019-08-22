@@ -52,7 +52,13 @@ class SignInViewController: UIViewController,UINavigationControllerDelegate, GID
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
      
         if user == nil {
-            return // Maybe pop error message
+            studyProperties.reloadList()
+            if studyProperties.researcherName != "" {
+                continueToStudy()
+            }
+            else {
+                noConnection()
+            }
         }
         
         spinner.startAnimating()//self.spinnerAction(shouldSpin: true)
@@ -100,6 +106,12 @@ class SignInViewController: UIViewController,UINavigationControllerDelegate, GID
         self.spinner.stopAnimating()//self.spinnerAction(shouldSpin: true)
         self.navigationController?.pushViewController(newViewController, animated: true)
 
+    }
+    
+    func noConnection() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "NoConnection")
+        self.navigationController?.pushViewController(newViewController, animated: true)
     }
     
     private func addGoogleSignInButton()

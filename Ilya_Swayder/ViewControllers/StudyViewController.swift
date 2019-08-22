@@ -51,7 +51,7 @@ class StudyViewController: UIViewController {
         
         startSyncView()
         
-        let (whoToSync, numOfFiles) = studyProperties.getParticipantsToSync()
+        let whoToSync = studyProperties.getParticipantsToSync()
         
         DispatchQueue.global(qos: .userInitiated).async {
         
@@ -72,8 +72,8 @@ class StudyViewController: UIViewController {
                 syncGroup.enter()
                 self.projectFileManager.syncResearcher(name: self.studyProperties.researcherName, participants: [single], numberOfFilesToSync: numOfFiles, completion: {(finish) in
       
-                    if finish == false {
-                        Study.listOfParticipantsTrialEnds[index!].isSynced = false
+                    if finish != false {
+                        Study.listOfParticipantsTrialEnds[index!].isSynced = true
                     }
                     
                     syncGroup.leave()
@@ -133,6 +133,12 @@ class StudyViewController: UIViewController {
             loadProtolOutlet.alpha = 0.5
             syncOutlet.isEnabled = false
             syncOutlet.alpha = 0.5
+        }
+        else {
+            loadProtolOutlet.isEnabled = false
+            loadProtolOutlet.alpha = 0.5
+            syncOutlet.isEnabled = true
+            syncOutlet.alpha = 1
         }
         
     }

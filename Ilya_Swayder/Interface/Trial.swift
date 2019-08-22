@@ -79,5 +79,9 @@ class Trial:NSObject, NSCoding{
     func getRawData() -> [rawData]?{
         return trialRawData
     }
+    
+    func eraseRawDate() {
+        trialRawData?.removeAll()
+    }
 }
 

@@ -89,18 +89,21 @@ class ProjectFileManager {
     
     func syncResearcher(name: String, participants:[String], numberOfFilesToSync:Int, completion: @escaping (Bool) ->()) {
         
-        if participants.isEmpty == true {
-            completion(true)
+        if ((participants.isEmpty == true) || (numberOfFilesToSync == 0)) {
+            completion(false)
+            return
         }
+        
+        self.fileCounter.setNumberToSync(numberOfFilesToSync)
         
         var firstFail:Bool = true
         
         drive.getResearcherPath(reasercherName: name, onCompleted: ({ (researcherFolderId, error) in
             if error != nil {
                 print("Failed to get participant path")
+                completion(false)
+                return
             }
-            
-            self.fileCounter.setNumberToSync(numberOfFilesToSync)
             
             for participant in participants {
                 
@@ -108,6 +111,7 @@ class ProjectFileManager {
                     
                     if error != nil {
                         print("Failed to get participant path")
+                        completion(false)
                         return
                     }
                     
@@ -118,7 +122,9 @@ class ProjectFileManager {
                                 
                                 self.drive.getTrialPath(participantDirId: participantDirId!.identifier!, trialName: dir.lastPathComponent, onCompleted: { (folderId, error) in
                                     if error != nil {
-                                        print("Failed to get trial path")
+                                        self.drive.delete(participantDirId!.identifier!, onCompleted: nil)
+                                        completion(false)
+                                        return
                                     }
                                     
                                     if let trialContent = try? FileManager.default.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil) {
@@ -129,12 +135,13 @@ class ProjectFileManager {
                                                 if error != nil {
                                                     if firstFail == true {
                                                         firstFail = false
+                                                        self.drive.delete(participantDirId!.identifier!, onCompleted: nil)
                                                         completion(false)
                                                     }
                                                     return
                                                 }
                                                let numberOfLeftFiles = self.fileCounter.decrementFile()
-                                               if numberOfLeftFiles == 0 {
+                                               if numberOfLeftFiles <= 0 {
                                                     completion(true)
                                                 }
                                             }))

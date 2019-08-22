@@ -67,6 +67,7 @@
 		F153743F22FDE51D0020CE91 /* tug_with_time.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F153743E22FDE51D0020CE91 /* tug_with_time.mp3 */; };
 		F1537441230077F30020CE91 /* swayderAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1537440230077F30020CE91 /* swayderAudioPlayer.swift */; };
 		F1537443230080300020CE91 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1537442230080300020CE91 /* beep.mp3 */; };
+		F153747F230DAA5C0020CE91 /* no-disconnect.png in Resources */ = {isa = PBXBuildFile; fileRef = F153747E230DAA5C0020CE91 /* no-disconnect.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +157,7 @@
 		F153743E22FDE51D0020CE91 /* tug_with_time.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tug_with_time.mp3; sourceTree = "<group>"; };
 		F1537440230077F30020CE91 /* swayderAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swayderAudioPlayer.swift; sourceTree = "<group>"; };
 		F1537442230080300020CE91 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
+		F153747E230DAA5C0020CE91 /* no-disconnect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-disconnect.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +261,7 @@
 		F14D34B522C53D2400B18BFA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F153747E230DAA5C0020CE91 /* no-disconnect.png */,
 				F153743C22FDE0C10020CE91 /* sls_with_time.mp3 */,
 				F1537442230080300020CE91 /* beep.mp3 */,
 				F153743E22FDE51D0020CE91 /* tug_with_time.mp3 */,
@@ -526,6 +529,7 @@
 				F153743722EE37C80020CE91 /* promo.png in Resources */,
 				F14D34AF22C53D1300B18BFA /* icons8-pause@2x.png in Resources */,
 				F14D34A422C53CAF00B18BFA /* Main.storyboard in Resources */,
+				F153747F230DAA5C0020CE91 /* no-disconnect.png in Resources */,
 				F14D34B422C53D1300B18BFA /* icons8-rewind@2x.png in Resources */,
 				F14D34B122C53D1300B18BFA /* icons8-rewind@3x.png in Resources */,
 				F14D34E222C7DE7C00B18BFA /* icons8-back@2x.png in Resources */,

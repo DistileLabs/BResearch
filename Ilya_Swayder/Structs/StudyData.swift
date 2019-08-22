@@ -54,7 +54,7 @@ class StudyData:NSObject,NSCoding {
         let numberOfFiles = aDecoder.decodeInteger(forKey: "numberOfDataFiles")
         let sls = aDecoder.decodeObject(forKey: "slsCode") as? SingleLegStanceTrial
         let tug = aDecoder.decodeObject(forKey: "tugCode") as? TugTrial
-        let tugRe = aDecoder.decodeObject(forKey: "timeAndDate") as? TugReliabilityTrial
+        let tugRe = aDecoder.decodeObject(forKey: "tugReCode") as? TugReliabilityTrial
         
         self.init(newParticipant: participant, timeAndDate:time, synced:sync)
         

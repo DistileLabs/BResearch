@@ -10,7 +10,7 @@ import Foundation
 
 class TugTrial: Trial {
     
-    init(newName: String = "TUG", flow:[TrialSetup] = [TrialSetup(name: "Get Ready for TUG trial", waitPeriod: 60, stageNum: 0),
+    init(newName: String = "TUG", flow:[TrialSetup] = [TrialSetup(name: "Get Ready for TUG trial", waitPeriod: 10, stageNum: 0),
                                                        TrialSetup(name: "TUG trial", waitPeriod: 10, stageNum: 1),])
     {
         super.init(trialName: newName, flow: flow, status: false, audioFile: "tug_with_time")
