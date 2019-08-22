@@ -50,42 +50,42 @@ class ProjectFileManager {
         }
     }
 
-    func getContentOfUserDir(reasercherName:String, participantName:String) -> () {
-        if let participantDir = getParticipantDir(reasercherName: reasercherName, participantName: participantName) {
-            
-            if let dirContents = try? FileManager.default.contentsOfDirectory(at: participantDir, includingPropertiesForKeys: nil) {
-                
-                // Get folder ID of Swayder/Reasercher/Participant
-                drive.getParticipantPath(reasercherName: reasercherName, participantName: participantName, onCompleted: ({ (participantFolderId, error) in
-                    if error != nil {
-                        print("Failed to get participant path")
-                    }
-                    
-                    for dir in dirContents {
-
-                        self.drive.getTrialPath(participantDirId: participantFolderId!, trialName: dir.lastPathComponent, onCompleted: { (folderId, error) in
-                            if error != nil {
-                                print("Failed to get trial path")
-                            }
-
-                            if let trialContent = try? FileManager.default.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil) {
-
-                                for file in trialContent {
-                                    
-                                    self.drive.upload(folderId!, path: file.path, MIMEType: "text/csv", onCompleted: ({ (result, error) in
-                                        if error != nil {
-                                            print("Upload failed")
-                                            return
-                                        }
-                                    }))
-                                }
-                            }
-                        })
-                    }
-                }))
-            }
-        }
-    }
+//    func getContentOfUserDir(reasercherName:String, participantName:String) -> () {
+//        if let participantDir = getParticipantDir(reasercherName: reasercherName, participantName: participantName) {
+//            
+//            if let dirContents = try? FileManager.default.contentsOfDirectory(at: participantDir, includingPropertiesForKeys: nil) {
+//                
+//                // Get folder ID of Swayder/Reasercher/Participant
+//                drive.getParticipantPath(reasercherName: reasercherName, participantName: participantName, onCompleted: ({ (participantFolderId, error) in
+//                    if error != nil {
+//                        print("Failed to get participant path")
+//                    }
+//                    
+//                    for dir in dirContents {
+//
+//                        self.drive.getTrialPath(participantDirId: participantFolderId!, trialName: dir.lastPathComponent, onCompleted: { (folderId, error) in
+//                            if error != nil {
+//                                print("Failed to get trial path")
+//                            }
+//
+//                            if let trialContent = try? FileManager.default.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil) {
+//
+//                                for file in trialContent {
+//                                    
+//                                    self.drive.upload(folderId!, path: file.path, MIMEType: "text/csv", onCompleted: ({ (result, error) in
+//                                        if error != nil {
+//                                            print("Upload failed")
+//                                            return
+//                                        }
+//                                    }))
+//                                }
+//                            }
+//                        })
+//                    }
+//                }))
+//            }
+//        }
+//    }
     
     func syncResearcher(name: String, participants:[String], numberOfFilesToSync:Int, completion: @escaping (Bool) ->()) {
         
@@ -107,7 +107,7 @@ class ProjectFileManager {
             
             for participant in participants {
                 
-                self.drive.createFolder(participant, parents: researcherFolderId, onCompleted: { (participantDirId, error) in
+                self.drive.getParticipantPath(participant, parents: researcherFolderId, onCompleted: { (participantDirId, error) in
                     
                     if error != nil {
                         print("Failed to get participant path")
@@ -141,7 +141,7 @@ class ProjectFileManager {
                                                     return
                                                 }
                                                let numberOfLeftFiles = self.fileCounter.decrementFile()
-                                               if numberOfLeftFiles <= 0 {
+                                               if numberOfLeftFiles == 0 {
                                                     completion(true)
                                                 }
                                             }))

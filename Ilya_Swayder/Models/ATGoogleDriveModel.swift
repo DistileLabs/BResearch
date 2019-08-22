@@ -85,32 +85,39 @@ class ATGoogleDrive {
         })
     }
     
-    public func getParticipantPath(reasercherName: String, participantName:String, onCompleted: ((String?, Error?) -> ())?) {
-        
-        getDirId("Elderly_survey", parentsId: nil, onCompleted: { (trialFolderId, error) in
-            if error != nil {
-                print("Elderly_survey dir_\(String(describing: error))")
-                return
-            }
-            
-            self.getDirId(reasercherName, parentsId: trialFolderId!.identifier, onCompleted: { (reasercherFolderId, error) in
-                
-                if error != nil {
-                    print("Reasercher dir_\(String(describing: error))")
-                    return
-                }
-                
-                self.createFolder(participantName, parents: reasercherFolderId?.identifier, onCompleted: { (newFolderID, error) in
+    public func getParticipantPath(_ name: String, parents: String?, onCompleted: @escaping (GTLRDrive_File?, Error?) -> ()) {
+    
+        self.search(name, parents: parents) { (folderID, error) in
+            if folderID != nil {
+                self.delete((folderID?.identifier!)!, onCompleted: { (error) in
                     if error != nil {
-                        // print("Create failed_\(newFolderID), parentID \(parentsId): \(error)")
+                        onCompleted(nil,error)
+                    }
+                    else {
+                        self.createFolder(name, parents: parents, onCompleted: { (newFolderID, error) in
+                            if error != nil {
+                                print("Create failed_\(name), parentID \(parents ?? ""): \(String(describing: error))")
+                            }
+                            else {
+                                
+                                onCompleted(newFolderID, nil)
+                            }
+                        })
+                    }
+                })
+            } else {
+                self.createFolder(name, parents: parents, onCompleted: { (newFolderID, error) in
+                    if error != nil {
+                        print("Create failed_\(name), parentID \(parents ?? ""): \(String(describing: error))")
+                        onCompleted(nil,error)
                     }
                     else {
                         
-                        onCompleted!(newFolderID?.identifier, nil)
+                        onCompleted(newFolderID, nil)
                     }
                 })
-            })
-        })
+            }
+        }
     }
     
     public func getResearcherPath(reasercherName: String, onCompleted: ((String?, Error?) -> ())?) {
@@ -225,6 +232,8 @@ class ATGoogleDrive {
             onCompleted(folder as? GTLRDrive_File, error)
         }
     }
+    
+    
     
     public func delete(_ fileID: String, onCompleted: ((Error?) -> ())?) {
         let query = GTLRDriveQuery_FilesDelete.query(withFileId: fileID)
