@@ -39,11 +39,14 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+       audioPlayer.pauseAudio()
         UIApplication.shared.isIdleTimerDisabled = true
+        NotificationCenter.default.addObserver(self, selector: #selector(closeActivityController), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         UIApplication.shared.isIdleTimerDisabled = false
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
     
     func setupUI()
@@ -322,5 +325,10 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         }
         
         return number
+    }
+    
+    @objc func closeActivityController() {
+        rewindButton()
+        pause()
     }
 }
