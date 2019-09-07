@@ -328,6 +328,16 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     @objc func closeActivityController() {
+        let phasePreFix = String((currentPhase.stageName?.prefix(9))!)
+        if phasePreFix != Get_Ready {
+            let alert = UIAlertController(title: "Experiment was interrupted !", message: "", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+  
+            }))
+            
+            self.present(alert, animated: true)
+        }
+        
         rewindButton()
         pause()
     }
