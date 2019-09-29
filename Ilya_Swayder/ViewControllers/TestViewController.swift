@@ -33,7 +33,7 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         
         initButtonsAction()
-        totalStages = currentTrial.trialFlow!.count
+        totalStages = currentTrial.getTrialFlowCount()!
 
         runPhase()
     }
@@ -51,7 +51,7 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
     
     func setupUI()
     {
-        currentPhase = currentTrial.trialFlow![stageNumber]
+        currentPhase = currentTrial.getTrialStage(at: stageNumber)//currentTrial.trialFlow![stageNumber]
         
         testView.navController = navController
         
@@ -330,7 +330,7 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
     @objc func closeActivityController() {
         let phasePreFix = String((currentPhase.stageName?.prefix(9))!)
         if phasePreFix != Get_Ready {
-            let alert = UIAlertController(title: "Experiment was interrupted !", message: "", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Experiment was interrupted !", message: "Last phase needs to be repeated", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
   
             }))

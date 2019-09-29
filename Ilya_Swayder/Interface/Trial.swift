@@ -15,6 +15,7 @@ class Trial:NSObject, NSCoding{
     var trialFlow:[TrialSetup]?
     var trialRawData:[rawData]?
     var audioFileName:String?
+    static var cycleNumber:Int = 0
  
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: "trialName")
@@ -22,6 +23,7 @@ class Trial:NSObject, NSCoding{
         aCoder.encode(trialFlow, forKey: "flow")
         aCoder.encode(trialRawData, forKey: "data")
         aCoder.encode(audioFileName, forKey: "audio")
+        aCoder.encode(Trial.cycleNumber, forKey: "cycleNumber")
         
     }
 
@@ -31,11 +33,13 @@ class Trial:NSObject, NSCoding{
         let tFlow = aDecoder.decodeObject(forKey: "flow") as! [TrialSetup]
         let data = aDecoder.decodeObject(forKey: "data") as! [rawData]
         let audioFileLoad = aDecoder.decodeObject(forKey: "audio") as? String
+        let currentCycleNumber = aDecoder.decodeObject(forKey: "cycleNumber") as! Int
 
         
         self.init(trialName:trialName, flow:tFlow, status: finishStatus, audioFile:audioFileLoad!)
 
         trialRawData = data
+        Trial.cycleNumber = currentCycleNumber
 
     }
     
@@ -45,6 +49,14 @@ class Trial:NSObject, NSCoding{
         trialFlow = flow
         isFinished = status
         audioFileName = audioFile
+    }
+    
+    func getTrialFlowCount() -> Int? {
+        return trialFlow?.count
+    }
+    
+    func getTrialStage(at index: Int) -> TrialSetup? {
+        return trialFlow![index]
     }
     
     func run() {
