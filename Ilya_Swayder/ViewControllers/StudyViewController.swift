@@ -11,6 +11,8 @@ import UIKit
 import GoogleSignIn
 import GoogleAPIClientForREST
 
+var cycleNumber:Int = 0
+
 class StudyViewController: UIViewController {
     
     let studyProperties = Study.getStudy()
@@ -125,7 +127,7 @@ class StudyViewController: UIViewController {
     {
         self.setSyncTimeLabel()
         self.statusBar.name.text = studyProperties.researcherName
-        self.statusBar.signOutButton.setBackgroundImage(studyProperties.researcherImage, for: .normal)
+        self.statusBar.userImage.image = studyProperties.researcherImage
         self.statusBar.signOutButton.addTarget(self, action: #selector(signOutAction), for: .touchUpInside)
         
         if Reachability.isConnectedToNetwork() == false {

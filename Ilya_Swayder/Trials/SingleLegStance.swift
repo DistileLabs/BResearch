@@ -17,19 +17,19 @@ class SingleLegStanceTrial: Trial {
                                                TrialSetup(name: "SLS2", waitPeriod: 10, stageNum: 3),
                                                TrialSetup(name: "Get Ready SLS3", waitPeriod: 10, stageNum: 4),
                                                TrialSetup(name: "SLS3", waitPeriod: 10, stageNum: 5),]) {
-        super.init(trialName: newName, flow: flow, status: false, audioFile: "sls_with_time")
+        super.init(trialName: newName, flow: flow, status: NOT_FINISHED, audioFile: "sls_with_time")
     }
     //, audioFile:"sls_with_time"
     required convenience init(coder aDecoder: NSCoder) {
-        //let trialName = aDecoder.decodeObject(forKey: "trialName") as! String
-        let finishStatus = aDecoder.decodeBool(forKey: "isFinished")
+        let trialName = aDecoder.decodeObject(forKey: "trialName") as! String
+        let finishStatus = aDecoder.decodeInteger(forKey: "isFinished")
         let tFlow = aDecoder.decodeObject(forKey: "flow") as! [TrialSetup]
         let data = aDecoder.decodeObject(forKey: "data") as? [rawData]
         let audioFile = aDecoder.decodeObject(forKey: "audio") as? String
         
         self.init()
         
-        isFinished = finishStatus
+        isFinished = finishStatus// ?? NOT_FINISHED
         trialFlow = tFlow
         trialRawData = data
         audioFileName = audioFile

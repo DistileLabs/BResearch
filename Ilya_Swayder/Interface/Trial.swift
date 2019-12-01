@@ -11,11 +11,11 @@ import Foundation
 class Trial:NSObject, NSCoding{
     
     var name:String = ""
-    var isFinished:Bool = false
+    var isFinished:Int = NOT_FINISHED
     var trialFlow:[TrialSetup]?
     var trialRawData:[rawData]?
     var audioFileName:String?
-    static var cycleNumber:Int = 0
+    var currentPhase:Int = 0
  
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: "trialName")
@@ -23,27 +23,26 @@ class Trial:NSObject, NSCoding{
         aCoder.encode(trialFlow, forKey: "flow")
         aCoder.encode(trialRawData, forKey: "data")
         aCoder.encode(audioFileName, forKey: "audio")
-        aCoder.encode(Trial.cycleNumber, forKey: "cycleNumber")
+        aCoder.encode(currentPhase,forKey: "currentPhase")
         
     }
 
     required convenience init(coder aDecoder: NSCoder) {
         let trialName = aDecoder.decodeObject(forKey: "trialName") as! String
-        let finishStatus = aDecoder.decodeBool(forKey: "isFinished")
+        let finishStatus = aDecoder.decodeInteger(forKey: "isFinished")
         let tFlow = aDecoder.decodeObject(forKey: "flow") as! [TrialSetup]
         let data = aDecoder.decodeObject(forKey: "data") as! [rawData]
         let audioFileLoad = aDecoder.decodeObject(forKey: "audio") as? String
-        let currentCycleNumber = aDecoder.decodeObject(forKey: "cycleNumber") as! Int
-
+        let phase = aDecoder.decodeInteger(forKey: "currentPhase")
         
         self.init(trialName:trialName, flow:tFlow, status: finishStatus, audioFile:audioFileLoad!)
 
         trialRawData = data
-        Trial.cycleNumber = currentCycleNumber
+        currentPhase = phase
 
     }
     
-    init(trialName:String, flow:[TrialSetup], status:Bool, audioFile:String) {
+    init(trialName:String, flow:[TrialSetup], status:Int, audioFile:String) {
         
         name = trialName
         trialFlow = flow
@@ -80,10 +79,18 @@ class Trial:NSObject, NSCoding{
     }
     
     func setRawData(data:[rawData]) {
-        trialRawData = data
+        
+        if trialRawData == nil {
+            
+            trialRawData = data
+        }
+        else {
+            
+            trialRawData! += data
+        }
     }
     
-    func setTrialStatus(isFinishedStatus:Bool)
+    func setTrialStatus(isFinishedStatus:Int)
     {
         isFinished = isFinishedStatus
     }
@@ -94,6 +101,11 @@ class Trial:NSObject, NSCoding{
     
     func eraseRawDate() {
         trialRawData?.removeAll()
+    }
+    
+    func isSpecificTrialFinished() -> Int {
+        
+        return isFinished
     }
 }
 

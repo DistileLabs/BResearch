@@ -27,8 +27,7 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
 
 
     private var Get_Ready:String = "Get Ready"
-    
-    @IBOutlet var testView: TestView!
+    @IBOutlet weak var fixedTestView: TestView!
     
     override func viewDidLoad() {
         
@@ -53,37 +52,37 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
     {
         currentPhase = currentTrial.getTrialStage(at: stageNumber)//currentTrial.trialFlow![stageNumber]
         
-        testView.navController = navController
+        fixedTestView.navController = navController
         
-        testView.name.text = currentPhase.stageName
+        fixedTestView.name.text = currentPhase.stageName
 
         setTimeForTimer(seconds: Int(currentPhase.waitingPeriod!))
         let phasePreFix = String((currentPhase.stageName?.prefix(9))!)
         if (phasePreFix == Get_Ready )
         {
-            testView.name.backgroundColor = UIColor.init(red: 23.0/255, green: 72.0/255, blue: 111.0/255, alpha: 1)
-            testView.pause.alpha = 1
-            testView.pause.isEnabled = true
+            fixedTestView.name.backgroundColor = UIColor(named: "pink dark brand")//UIColor.init(red: 23.0/255, green: 72.0/255, blue: 111.0/255, alpha: 1)
+            fixedTestView.pause.alpha = 1
+            fixedTestView.pause.isEnabled = true
         }
         else
         {
-            testView.name.backgroundColor = UIColor.init(red: 40.0/255, green: 139.0/255, blue: 39.0/255, alpha: 1)
-            testView.pause.alpha = 0.5
-            testView.pause.isEnabled = false
+            fixedTestView.name.backgroundColor = UIColor(named: "orange dark brank")//UIColor.init(red: 40.0/255, green: 139.0/255, blue: 39.0/255, alpha: 1)
+            fixedTestView.pause.alpha = 0.5
+            fixedTestView.pause.isEnabled = false
         }
     }
     
     func initButtonsAction() {
         
-        testView.pause.addTarget(self, action: #selector(pauseButton), for: .touchUpInside)
-        testView.fastForward.addTarget(self, action: #selector(fastForwardButton), for: .touchUpInside)
-        testView.rewind.addTarget(self, action: #selector(rewindButton), for: .touchUpInside)
-        testView.returnButton.addTarget(self, action: #selector(returnToMenu), for: .touchUpInside)
+        fixedTestView.pause.addTarget(self, action: #selector(pauseButton), for: .touchUpInside)
+        fixedTestView.fastForward.addTarget(self, action: #selector(fastForwardButton), for: .touchUpInside)
+        fixedTestView.rewind.addTarget(self, action: #selector(rewindButton), for: .touchUpInside)
+        fixedTestView.returnButton.addTarget(self, action: #selector(returnToMenu), for: .touchUpInside)
     }
     
     func getData () -> String{
     
-        return self.testView.testModel.getMotionData()!
+        return self.fixedTestView.testModel.getMotionData()!
     }
     
     func runPhase() {
@@ -94,11 +93,11 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
     func runTimer() {
         
         if timer == nil {
-            testView.timerLabel.text = String(timerSeconds)
+            fixedTestView.timerLabel.text = String(timerSeconds)
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
             let phasePreFix = String((currentPhase.stageName?.prefix(9))!)
             if phasePreFix != Get_Ready {
-                testView.testModel.startDeviceMotion(maxTime: currentPhase.waitingPeriod!)
+                fixedTestView.testModel.startDeviceMotion(maxTime: currentPhase.waitingPeriod!)
             }
         }
     }
@@ -110,7 +109,7 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
             if timer != nil {
                 timer!.invalidate()
 
-                testView.testModel.stopDeviceMotion()
+                fixedTestView.testModel.stopDeviceMotion()
                 timer = nil
                 nextMove()
             }
@@ -123,7 +122,7 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
             }
             scheduleAudioFile(secondsLeft: timerSeconds)
             timerSeconds -= 1
-            testView.timerLabel.text = String(timerSeconds)
+            fixedTestView.timerLabel.text = String(timerSeconds)
         }
     }
     
@@ -183,12 +182,12 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         if let newStage = searchForClosestGetReadyPhase(fromStart: false, doubeTap: false) {
             stageNumber = newStage
             pause()
-            testView.pause.setImage(UIImage(named: "icons8-pause"), for: .normal)
+            fixedTestView.pause.setImage(UIImage(named: "icons8-pause"), for: .normal)
             runPhase()
         }
         else {
             timer?.invalidate()
-            testView.testModel.stopDeviceMotion()
+            fixedTestView.testModel.stopDeviceMotion()
             endTrial()
         }
     }
@@ -201,7 +200,7 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         if let newStage = searchForClosestGetReadyPhase(fromStart: true, doubeTap: isDoubleTap) {
             stageNumber = newStage
             pause()
-            testView.pause.setImage(UIImage(named: "icons8-pause"), for: .normal)
+            fixedTestView.pause.setImage(UIImage(named: "icons8-pause"), for: .normal)
             runPhase()
         }
     }
@@ -228,7 +227,7 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     func pause() {
-        testView.pause.setImage(UIImage(named: "icons8-play"), for: .normal)
+        fixedTestView.pause.setImage(UIImage(named: "icons8-play"), for: .normal)
         isPaused = true
         timer?.invalidate()
         timer = nil
@@ -236,7 +235,7 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     func restart() {
-        testView.pause.setImage(UIImage(named: "icons8-pause"), for: .normal)
+        fixedTestView.pause.setImage(UIImage(named: "icons8-pause"), for: .normal)
         isPaused = false
         runTimer()
         audioPlayer.unpauseAudio()

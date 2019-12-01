@@ -8,10 +8,14 @@
 
 import Foundation
 
+let FINISHED = 1
+let NOT_FINISHED = -1
+let IN_PROGRESS = 0
+
 protocol PerformTrial {
     
     var name:String {get}
-    var isFinished:Bool {get}
+    var isFinished:Int {get}
     
     func run()
     func getData()

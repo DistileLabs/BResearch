@@ -50,43 +50,6 @@ class ProjectFileManager {
         }
     }
 
-//    func getContentOfUserDir(reasercherName:String, participantName:String) -> () {
-//        if let participantDir = getParticipantDir(reasercherName: reasercherName, participantName: participantName) {
-//            
-//            if let dirContents = try? FileManager.default.contentsOfDirectory(at: participantDir, includingPropertiesForKeys: nil) {
-//                
-//                // Get folder ID of Swayder/Reasercher/Participant
-//                drive.getParticipantPath(reasercherName: reasercherName, participantName: participantName, onCompleted: ({ (participantFolderId, error) in
-//                    if error != nil {
-//                        print("Failed to get participant path")
-//                    }
-//                    
-//                    for dir in dirContents {
-//
-//                        self.drive.getTrialPath(participantDirId: participantFolderId!, trialName: dir.lastPathComponent, onCompleted: { (folderId, error) in
-//                            if error != nil {
-//                                print("Failed to get trial path")
-//                            }
-//
-//                            if let trialContent = try? FileManager.default.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil) {
-//
-//                                for file in trialContent {
-//                                    
-//                                    self.drive.upload(folderId!, path: file.path, MIMEType: "text/csv", onCompleted: ({ (result, error) in
-//                                        if error != nil {
-//                                            print("Upload failed")
-//                                            return
-//                                        }
-//                                    }))
-//                                }
-//                            }
-//                        })
-//                    }
-//                }))
-//            }
-//        }
-//    }
-    
     func syncResearcher(name: String, participants:[String], numberOfFilesToSync:Int, completion: @escaping (Bool) ->()) {
         
         if ((participants.isEmpty == true) || (numberOfFilesToSync == 0)) {
@@ -270,16 +233,5 @@ class ProjectFileManager {
         return paths[0]
     }
     
-//    private func saveCsvFile(data:String, userName:String, csvFolderName: String, csvName: String) {
-//
-//        if let userDir = setDirectory(dirName: userName) {
-//
-//            if let folderName = setDirectory(dirName: csvFolderName, toPath: userDir) {
-//
-//                let fileName = folderName.appendingPathComponent("\(csvName).csv")
-//
-//                //try? data.write(to: fileName)
-//            }
-//        }
-//    }
+
 }

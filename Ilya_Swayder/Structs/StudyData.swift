@@ -84,25 +84,25 @@ class StudyData:NSObject,NSCoding {
         }
     }
 
-    func isTrialFinished(trialName: String) -> Bool{
+    func isTrialFinished(trialName: String) -> Int{
         
         switch trialName {
         case SingleLegStance.getName():
-            return SingleLegStance.isFinished
+            return SingleLegStance.isSpecificTrialFinished()
         case TUG.getName():
-            return TUG.isFinished
+            return TUG.isSpecificTrialFinished()
         case TugReliability.getName():
-            return TugReliability.isFinished
+            return TugReliability.isSpecificTrialFinished()
         default:
-            return false
+            return NOT_FINISHED
         }
     }
     
     func isAllMandatoryTrialFinished() -> Bool {
         
-        if SingleLegStance.isFinished == true
+        if SingleLegStance.isSpecificTrialFinished() == FINISHED
         {
-            if TUG.isFinished == true || TugReliability.isFinished == true
+            if TUG.isSpecificTrialFinished() == FINISHED || TugReliability.isSpecificTrialFinished() == FINISHED
             {
                 return true
             }
