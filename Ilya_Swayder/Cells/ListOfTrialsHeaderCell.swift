@@ -22,11 +22,11 @@ class ListOfTrialsHeaderCell: UITableViewCell {
         
         if progressLabel.text == "Completed" {
             
-            self.backgroundColor = UIColor(red: 46.0/255, green: 153.0/255, blue: 51.0/255, alpha: 1)
+            self.backgroundColor = UIColor(named: K.Colors.brandOrangeDark)
         }
         else
         {
-            self.backgroundColor = UIColor(red: 221.0/255, green: 75.0/255, blue: 57.0/255, alpha: 1)
+            self.backgroundColor = UIColor(named: K.Colors.brandPinkDark)
         }
     }
 }

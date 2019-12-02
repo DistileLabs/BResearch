@@ -68,6 +68,9 @@
 		F1A24E45234BA1FA00E1EF47 /* sls_with_time.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1A24E44234BA1FA00E1EF47 /* sls_with_time.mp3 */; };
 		F1A24E47234BA20D00E1EF47 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1A24E46234BA20D00E1EF47 /* beep.mp3 */; };
 		F1A24E49234BA22400E1EF47 /* tug_with_time.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1A24E48234BA22400E1EF47 /* tug_with_time.mp3 */; };
+		F1A946152393B137000344FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1A946142393B137000344FA /* GoogleService-Info.plist */; };
+		F1A946172393B4A0000344FA /* FireBaseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A946162393B4A0000344FA /* FireBaseStorage.swift */; };
+		F1A946192393B819000344FA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A946182393B819000344FA /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +161,9 @@
 		F1A24E44234BA1FA00E1EF47 /* sls_with_time.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sls_with_time.mp3; path = ../../../sls_with_time.mp3; sourceTree = "<group>"; };
 		F1A24E46234BA20D00E1EF47 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = beep.mp3; path = ../../../beep.mp3; sourceTree = "<group>"; };
 		F1A24E48234BA22400E1EF47 /* tug_with_time.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = tug_with_time.mp3; path = ../../../tug_with_time.mp3; sourceTree = "<group>"; };
+		F1A946142393B137000344FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F1A946162393B4A0000344FA /* FireBaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseStorage.swift; sourceTree = "<group>"; };
+		F1A946182393B819000344FA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +242,7 @@
 				F14D34A522C53CD600B18BFA /* AppDelegate.swift */,
 				F14D34A322C53CAF00B18BFA /* Main.storyboard */,
 				F14D347522C53A4B00B18BFA /* Info.plist */,
+				F1A946142393B137000344FA /* GoogleService-Info.plist */,
 			);
 			path = Ilya_Swayder;
 			sourceTree = "<group>";
@@ -365,6 +372,8 @@
 				F14D350E22DB9F7400B18BFA /* ATGoogleDriveModel.swift */,
 				F153743822F9E1FF0020CE91 /* uploadCounterModel.swift */,
 				F1537440230077F30020CE91 /* swayderAudioPlayer.swift */,
+				F1A946162393B4A0000344FA /* FireBaseStorage.swift */,
+				F1A946182393B819000344FA /* Constants.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -547,6 +556,7 @@
 				F153742822ECE0EB0020CE91 /* icons8-checkmark@2.png in Resources */,
 				F153742322DFB8730020CE91 /* icons8-play@3x.png in Resources */,
 				F14D34E622C7DEF900B18BFA /* icons8-back-white@3x.png in Resources */,
+				F1A946152393B137000344FA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +641,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F14D34EE22C91F7A00B18BFA /* Study+Extention.swift in Sources */,
+				F1A946192393B819000344FA /* Constants.swift in Sources */,
 				F14D34FD22CE603800B18BFA /* UIImageView+Extention.swift in Sources */,
 				F14D34DC22C5461300B18BFA /* PerformTrial.swift in Sources */,
 				F14D34F722CBC18F00B18BFA /* ListOfTrialsContentCell.swift in Sources */,
@@ -662,6 +673,7 @@
 				F14D34CD22C545D300B18BFA /* StudyViewController.swift in Sources */,
 				F14D346C22C53A4900B18BFA /* ViewController.swift in Sources */,
 				F14D350022CFBD6E00B18BFA /* StudyViewController+Extention.swift in Sources */,
+				F1A946172393B4A0000344FA /* FireBaseStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

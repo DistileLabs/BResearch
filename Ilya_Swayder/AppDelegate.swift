@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleSignIn
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -18,9 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        FirebaseApp.configure()
         // Configure google sign-in
-        GIDSignIn.sharedInstance().clientID = "302121795029-dnurfk38rrsmcv45n4th8e0vs3god7bg.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().clientID = "244775951103-scr8mh4c5hrqiv55q16pt2nehr49vh61.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
         
         return true
@@ -32,21 +33,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                                                  annotation: options[UIApplication.OpenURLOptionsKey.annotation])
     }
     
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
-              withError error: Error!) {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
             print("\(error.localizedDescription)")
         } else {
-            // Perform any operations on signed in user here.
-            let userId = user.userID                  // For client-side use only!
-            let idToken = user.authentication.idToken // Safe to send to the server
-            let fullName = user.profile.name
-            let givenName = user.profile.givenName
-            let familyName = user.profile.familyName
-            let email = user.profile.email
-
-            
-            
+            guard let authentication = user.authentication else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                              accessToken: authentication.accessToken)
         }
     }
 
@@ -62,12 +55,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     
     func applicationWillResignActive(_ application: UIApplication) {
-        
+        study.saveStudyModelForReaercher()
+        UserDefaults.standard.set(cycleNumber, forKey: "cycleNumber")
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        study.saveStudyModelForReaercher()
-        UserDefaults.standard.set(cycleNumber, forKey: "cycleNumber")
+        //study.saveStudyModelForReaercher()
+        
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -79,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-       // study.saveStudyModelForReaercher()
+
     }
 
 

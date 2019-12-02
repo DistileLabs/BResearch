@@ -11,13 +11,12 @@ import UIKit
 import GoogleSignIn
 import GoogleAPIClientForREST
 
-var cycleNumber:Int = 0
-
 class StudyViewController: UIViewController {
     
     let studyProperties = Study.getStudy()
     let googleDriveService = GTLRDriveService()
     let projectFileManager = ProjectFileManager.getFileManager()
+    let fireBaseStorage = FireBaseStorage()
     var navController:UINavigationController!
     
     @IBOutlet var statusBar: StatusBarView!
@@ -34,7 +33,6 @@ class StudyViewController: UIViewController {
         newViewController.navCont = navController
         self.navigationController?.pushViewController(newViewController, animated: true)
         //self.present(newViewController, animated: true, completion: nil)
-        
     }
     
     @IBAction func listOfTrials(_ sender: Any) {
@@ -60,7 +58,7 @@ class StudyViewController: UIViewController {
             let syncGroup = DispatchGroup()
             
             var progressCounter:Int = 1
-    
+            let researcherName = self.studyProperties.researcherName
             for single in whoToSync {
                 
                 let index = self.studyProperties.getFinishedStudyParticipantIndex(name: single)
@@ -71,21 +69,36 @@ class StudyViewController: UIViewController {
                     self.lastSyncLabel.text = "Syncing \(progressCounter)/\(whoToSync.count)"
                 }
               
+                let filtered = Study.listOfParticipantsFromOnlineStorage?.filter({ $0 == single })
+                if filtered?.isEmpty == false {
+                    syncGroup.enter()
+                    self.fireBaseStorage.deleteParticipant(name: single) {
+                        syncGroup.leave()
+                    }
+                    syncGroup.wait()
+                }
+                
+                
+                
                 syncGroup.enter()
-                self.projectFileManager.syncResearcher(name: self.studyProperties.researcherName, participants: [single], numberOfFilesToSync: numOfFiles, completion: {(finish) in
-      
-                    if finish != false {
+                
+                let participantDir = self.projectFileManager.getParticipantDir(reasercherName: researcherName, participantName: single)
+                
+                self.fireBaseStorage.uploadTrial(partifipantName: single, uploadFromURL: participantDir!, numberOfFiles: numOfFiles) { (isFinished) in
+                    if isFinished != false {
                         Study.listOfParticipantsTrialEnds[index!].isSynced = true
+                    } else {
+                        self.stopSyncView()
+                        return
                     }
                     
                     syncGroup.leave()
-                })
+                    
+                }
                 
                 progressCounter += 1
                 syncGroup.wait()
             }
-            
-
             
             DispatchQueue.main.async {
 
@@ -94,7 +107,6 @@ class StudyViewController: UIViewController {
                 self.setSyncTimeLabel()
             }
         }
- 
     }
     
 //    @IBAction func sync(_ sender: Any) {
@@ -142,7 +154,6 @@ class StudyViewController: UIViewController {
             syncOutlet.isEnabled = true
             syncOutlet.alpha = 1
         }
-        
     }
     
     @objc func signOutAction() {

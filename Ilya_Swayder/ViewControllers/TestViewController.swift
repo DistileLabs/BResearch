@@ -60,13 +60,13 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         let phasePreFix = String((currentPhase.stageName?.prefix(9))!)
         if (phasePreFix == Get_Ready )
         {
-            fixedTestView.name.backgroundColor = UIColor(named: "pink dark brand")//UIColor.init(red: 23.0/255, green: 72.0/255, blue: 111.0/255, alpha: 1)
+            fixedTestView.name.backgroundColor = UIColor(named: K.Colors.brandPinkDark)//UIColor.init(red: 23.0/255, green: 72.0/255, blue: 111.0/255, alpha: 1)
             fixedTestView.pause.alpha = 1
             fixedTestView.pause.isEnabled = true
         }
         else
         {
-            fixedTestView.name.backgroundColor = UIColor(named: "orange dark brank")//UIColor.init(red: 40.0/255, green: 139.0/255, blue: 39.0/255, alpha: 1)
+            fixedTestView.name.backgroundColor = UIColor(named: K.Colors.brandOrangeDark)//UIColor.init(red: 40.0/255, green: 139.0/255, blue: 39.0/255, alpha: 1)
             fixedTestView.pause.alpha = 0.5
             fixedTestView.pause.isEnabled = false
         }
@@ -182,7 +182,7 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         if let newStage = searchForClosestGetReadyPhase(fromStart: false, doubeTap: false) {
             stageNumber = newStage
             pause()
-            fixedTestView.pause.setImage(UIImage(named: "icons8-pause"), for: .normal)
+            //fixedTestView.pause.setImage(UIImage(named: "icons8-pause"), for: .normal)
             runPhase()
         }
         else {
@@ -200,7 +200,7 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
         if let newStage = searchForClosestGetReadyPhase(fromStart: true, doubeTap: isDoubleTap) {
             stageNumber = newStage
             pause()
-            fixedTestView.pause.setImage(UIImage(named: "icons8-pause"), for: .normal)
+            //fixedTestView.pause.setImage(UIImage(named: "icons8-pause"), for: .normal)
             runPhase()
         }
     }
@@ -227,7 +227,7 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     func pause() {
-        fixedTestView.pause.setImage(UIImage(named: "icons8-play"), for: .normal)
+        //fixedTestView.pause.setImage(UIImage(named: "icons8-play"), for: .normal)
         isPaused = true
         timer?.invalidate()
         timer = nil
@@ -235,7 +235,7 @@ class TestViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     func restart() {
-        fixedTestView.pause.setImage(UIImage(named: "icons8-pause"), for: .normal)
+        //fixedTestView.pause.setImage(UIImage(named: "icons8-pause"), for: .normal)
         isPaused = false
         runTimer()
         audioPlayer.unpauseAudio()

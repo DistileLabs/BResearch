@@ -209,8 +209,8 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List of Trials" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nqh-cm-Nbi">
-                                <rect key="frame" x="0.0" y="141" width="375" height="35"/>
-                                <color key="backgroundColor" red="0.1053078249" green="0.35801753400000003" blue="0.51187586780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="145" width="375" height="35"/>
+                                <color key="backgroundColor" name="purple brand"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="V01-we-1bF"/>
                                 </constraints>
@@ -219,7 +219,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jic-Pp-WgZ">
-                                <rect key="frame" x="0.0" y="176" width="375" height="602"/>
+                                <rect key="frame" x="0.0" y="180" width="375" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="headerCell" rowHeight="60" id="uI8-hp-kWd" customClass="ListOfTrialsHeaderCell" customModule="Ilya_Swayder" customModuleProvider="target">
@@ -356,7 +356,7 @@
                             <constraint firstItem="vSL-Rj-h4b" firstAttribute="trailing" secondItem="jic-Pp-WgZ" secondAttribute="trailing" id="oNa-SO-sBQ"/>
                             <constraint firstItem="jic-Pp-WgZ" firstAttribute="top" secondItem="Nqh-cm-Nbi" secondAttribute="bottom" id="qMh-KU-n0W"/>
                             <constraint firstItem="iCV-x6-Smk" firstAttribute="top" secondItem="vSL-Rj-h4b" secondAttribute="top" id="tcL-HA-U5t"/>
-                            <constraint firstItem="Nqh-cm-Nbi" firstAttribute="top" secondItem="iCV-x6-Smk" secondAttribute="bottom" id="tdt-g7-2hk"/>
+                            <constraint firstItem="Nqh-cm-Nbi" firstAttribute="top" secondItem="iCV-x6-Smk" secondAttribute="bottom" constant="4" id="tdt-g7-2hk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vSL-Rj-h4b"/>
                     </view>
@@ -385,7 +385,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Trial" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVc-Cf-23D">
-                                <rect key="frame" x="0.0" y="141" width="375" height="35"/>
+                                <rect key="frame" x="0.0" y="145" width="375" height="35"/>
                                 <color key="backgroundColor" name="purple brand"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Dyt-b4-okY"/>
@@ -395,7 +395,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sg3-nc-fby">
-                                <rect key="frame" x="27" y="286" width="321" height="90"/>
+                                <rect key="frame" x="27" y="290" width="321" height="90"/>
                                 <color key="backgroundColor" name="orange dark brank"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="qzL-TK-Id9"/>
@@ -415,7 +415,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4vh-WY-Sbj">
-                                <rect key="frame" x="27" y="396" width="321" height="90"/>
+                                <rect key="frame" x="27" y="400" width="321" height="90"/>
                                 <color key="backgroundColor" name="orange dark brank"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="jrv-Xh-IMY"/>
@@ -434,8 +434,8 @@
                                     <action selector="tugAtcion:" destination="T95-IX-TBn" eventType="touchUpInside" id="vGf-e9-6jG"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="v.png" translatesAutoresizingMaskIntoConstraints="NO" id="Src-ox-cwg">
-                                <rect key="frame" x="326" y="386" width="40" height="40"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmarkBrand" translatesAutoresizingMaskIntoConstraints="NO" id="Src-ox-cwg">
+                                <rect key="frame" x="326" y="390" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="6eS-iV-3aU"/>
                                     <constraint firstAttribute="height" constant="40" id="HXe-bx-KhZ"/>
@@ -448,7 +448,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wSY-1n-j49">
-                                <rect key="frame" x="27" y="636" width="321" height="90"/>
+                                <rect key="frame" x="27" y="640" width="321" height="90"/>
                                 <color key="backgroundColor" name="orange dark brank"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="TMN-ou-Kpd"/>
@@ -468,7 +468,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNE-ka-6jq">
-                                <rect key="frame" x="27" y="526" width="321" height="90"/>
+                                <rect key="frame" x="27" y="530" width="321" height="90"/>
                                 <color key="backgroundColor" name="orange dark brank"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="nNq-Hv-JuI"/>
@@ -488,7 +488,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uTz-rt-YUr">
-                                <rect key="frame" x="0.0" y="186" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="190" width="375" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Participant ID (Unique)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zlz-9O-xxX">
                                         <rect key="frame" x="27" y="0.0" width="321" height="15"/>
@@ -507,7 +507,7 @@
                                             <outlet property="delegate" destination="T95-IX-TBn" id="TgT-5S-xDP"/>
                                         </connections>
                                     </textField>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="v.png" translatesAutoresizingMaskIntoConstraints="NO" id="aXd-wt-5RE">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmarkBrand" translatesAutoresizingMaskIntoConstraints="NO" id="aXd-wt-5RE">
                                         <rect key="frame" x="308" y="23" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="32g-sK-XOw"/>
@@ -536,13 +536,13 @@
                                 </variation>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--------------- or ---------------" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIm-rI-Hbv">
-                                <rect key="frame" x="16" y="496" width="343" height="20"/>
+                                <rect key="frame" x="16" y="500" width="343" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="v.png" translatesAutoresizingMaskIntoConstraints="NO" id="B94-qJ-TXO">
-                                <rect key="frame" x="326" y="276" width="40" height="40"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmarkBrand" translatesAutoresizingMaskIntoConstraints="NO" id="B94-qJ-TXO">
+                                <rect key="frame" x="326" y="280" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="JtF-1a-Pb9"/>
                                     <constraint firstAttribute="height" constant="40" id="oT8-g2-Rlm"/>
@@ -554,8 +554,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="v.png" translatesAutoresizingMaskIntoConstraints="NO" id="DdC-If-rXl">
-                                <rect key="frame" x="324" y="516" width="40" height="40"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmarkBrand" translatesAutoresizingMaskIntoConstraints="NO" id="DdC-If-rXl">
+                                <rect key="frame" x="324" y="520" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="4x9-td-Gus"/>
                                     <constraint firstAttribute="height" constant="40" id="s0w-PN-z95"/>
@@ -595,7 +595,7 @@
                             <constraint firstItem="uTz-rt-YUr" firstAttribute="leading" secondItem="vqp-nZ-oRR" secondAttribute="leading" id="jpt-nI-Vvz"/>
                             <constraint firstItem="vqp-nZ-oRR" firstAttribute="trailing" secondItem="Src-ox-cwg" secondAttribute="trailing" constant="9" id="sDl-nN-k8H"/>
                             <constraint firstItem="B94-qJ-TXO" firstAttribute="top" secondItem="uTz-rt-YUr" secondAttribute="bottom" constant="30" id="sac-JD-sXq"/>
-                            <constraint firstItem="rVc-Cf-23D" firstAttribute="top" secondItem="bYb-3W-g6O" secondAttribute="bottom" id="vCj-EF-Lmh"/>
+                            <constraint firstItem="rVc-Cf-23D" firstAttribute="top" secondItem="bYb-3W-g6O" secondAttribute="bottom" constant="4" id="vCj-EF-Lmh"/>
                             <constraint firstItem="sg3-nc-fby" firstAttribute="top" secondItem="uTz-rt-YUr" secondAttribute="bottom" constant="40" id="wfn-pG-siG"/>
                             <constraint firstItem="vqp-nZ-oRR" firstAttribute="trailing" secondItem="B94-qJ-TXO" secondAttribute="trailing" constant="9" id="xZy-lk-ijB"/>
                             <constraint firstItem="vqp-nZ-oRR" firstAttribute="trailing" secondItem="sg3-nc-fby" secondAttribute="trailing" constant="27" id="xs0-Xy-yMe"/>
@@ -756,19 +756,19 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmarkBrand" width="45" height="45"/>
         <image name="no-disconnect.png" width="1200" height="600"/>
-        <image name="v.png" width="30" height="30"/>
         <namedColor name="orange dark brank">
-            <color red="0.93048191069999997" green="0.40005838869999999" blue="0.38787260649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.93000000715255737" green="0.40000000596046448" blue="0.3880000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="pink dark brand">
-            <color red="0.70949822659999995" green="0.16689446569999999" blue="0.39493200179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.70899999141693115" green="0.16699999570846558" blue="0.39500001072883606" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="purple brand">
-            <color red="0.38448610900000002" green="0.061257086689999997" blue="0.33302265409999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.38400000333786011" green="0.061000000685453415" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="yellow dark brand">
-            <color red="0.99954849479999996" green="0.63996928929999997" blue="0.4488106966" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.63999998569488525" blue="0.44900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

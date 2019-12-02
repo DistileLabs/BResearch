@@ -11,6 +11,7 @@ import UIKit
 import GoogleSignIn
 import GoogleAPIClientForREST
 import GTMSessionFetcher
+import Firebase
 
 
 class SignInViewController: UIViewController,UINavigationControllerDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
@@ -21,6 +22,7 @@ class SignInViewController: UIViewController,UINavigationControllerDelegate, GID
     var signInModel:SignInModel?
     let studyProperties:Study = Study.getStudy()
     let projectFileManager = ProjectFileManager.getFileManager()
+
     fileprivate let service = GTLRDriveService()
     var drive:ATGoogleDrive = ATGoogleDrive.getDrive()
     
@@ -50,52 +52,73 @@ class SignInViewController: UIViewController,UINavigationControllerDelegate, GID
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-     
+        
         if user == nil {
             studyProperties.reloadList()
             if studyProperties.researcherName != "" {
-                continueToStudy()
-            }
-            else {
+                let alert = UIAlertController(title: "Achtung", message: "No internet connection", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
+                    self.continueToStudy()
+                }))
+                self.spinner.stopAnimating()
+                self.present(alert, animated: true)
+            } else {
                 noConnection()
             }
-        }
-        
-        spinner.startAnimating()//self.spinnerAction(shouldSpin: true)
-        service.authorizer = user.authentication.fetcherAuthorizer()
-        drive.addDriveService(serv: service)
-        userSigned = user
- 
-        studyProperties.reloadList()
-        
-        if studyProperties.researcherEmail != user.profile.email
-        {
-            let group = DispatchGroup()
-            group.enter()
-            DispatchQueue.main.async {
- 
-                URLSession.shared.dataTask(with: user.profile.imageURL(withDimension: 100)) { (data, response, error) in
-                    if error != nil {
-                        print(error as Any)
-                        return
-                    }
-                    let newGivenName = self.userSigned?.profile?.givenName ?? ""
-                    let newFamilyName =  self.userSigned?.profile?.familyName ?? ""
-                    let newEmail = self.userSigned?.profile.email
-                    let newImage = UIImage(data: data!)
-                    self.studyProperties.studyParamsSet(newResearcherName: newGivenName + " " + newFamilyName , image: newImage, newResearcherEmail: newEmail!)
-
-                    group.leave()
+        } else {
+            
+            spinner.startAnimating()//self.spinnerAction(shouldSpin: true)
+            service.authorizer = user.authentication.fetcherAuthorizer()
+            drive.addDriveService(serv: service)
+            userSigned = user
+            
+            guard let authentication = user.authentication else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                           accessToken: authentication.accessToken)
+            
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+                if let e = error {
+                    print(e)
+                } else {
+                    let fireBaseStorage = FireBaseStorage()
                     
-                }.resume()
+                    fireBaseStorage.listFiles(from: K.FirebaseStorage.elderlySurvey) { (participantsNames) in
+                        Study.listOfParticipantsFromOnlineStorage = participantsNames
+                    }
+                }
             }
-            group.notify(queue: .main) {
+            
+            studyProperties.reloadList()
+            
+            if studyProperties.researcherEmail != user.profile.email
+            {
+                let group = DispatchGroup()
+                group.enter()
+                DispatchQueue.main.async {
+                    
+                    URLSession.shared.dataTask(with: user.profile.imageURL(withDimension: 100)) { (data, response, error) in
+                        if error != nil {
+                            print(error as Any)
+                            return
+                        }
+                        let newGivenName = self.userSigned?.profile?.givenName ?? ""
+                        let newFamilyName =  self.userSigned?.profile?.familyName ?? ""
+                        let newEmail = self.userSigned?.profile.email
+                        let newImage = UIImage(data: data!)
+                        self.studyProperties.studyParamsSet(newResearcherName: newGivenName + " " + newFamilyName , image: newImage, newResearcherEmail: newEmail!)
+                        
+                        group.leave()
+                        
+                    }.resume()
+                }
+                group.notify(queue: .main) {
+                    self.continueToStudy()
+                }
+            }
+            else
+            {
                 self.continueToStudy()
             }
-        }
-        else
-        {
-            self.continueToStudy()
         }
     }
     

@@ -120,7 +120,7 @@ class ProjectFileManager {
     }
     
     func getParticipantDir(reasercherName:String, participantName:String) -> URL? {
-        if let appDir = setDirectory(dirName: "Elderly_survey") {
+        if let appDir = setDirectory(dirName: K.FirebaseStorage.elderlySurvey) {
         
             if let reasercherDir = setDirectory(dirName: reasercherName, toPath: appDir) {
         

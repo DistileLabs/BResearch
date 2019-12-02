@@ -24,7 +24,6 @@ class Trial:NSObject, NSCoding{
         aCoder.encode(trialRawData, forKey: "data")
         aCoder.encode(audioFileName, forKey: "audio")
         aCoder.encode(currentPhase,forKey: "currentPhase")
-        
     }
 
     required convenience init(coder aDecoder: NSCoder) {
@@ -39,7 +38,6 @@ class Trial:NSObject, NSCoding{
 
         trialRawData = data
         currentPhase = phase
-
     }
     
     init(trialName:String, flow:[TrialSetup], status:Int, audioFile:String) {

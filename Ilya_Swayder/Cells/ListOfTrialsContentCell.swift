@@ -25,7 +25,7 @@ class ListOfTrialsContentCell: UITableViewCell {
         optionPressLabel.isHidden = shouldBePresseble != true ? true : false
         
         if isSynced == true {
-            isSyncedView.backgroundColor = UIColor(red: 4.0/255.0, green: 107.0/255.0, blue: 198.0/255.0, alpha: 1)
+            isSyncedView.backgroundColor = UIColor(named: K.Colors.brandYellowDark)
         }
         else if optionPressLabel.isHidden == false {
         

@@ -6,7 +6,6 @@
 //  Copyright © 2019 ilya_admin. All rights reserved.
 //
 import UIKit
-import UICircularProgressRing
 
 
 class TestView: UIView {

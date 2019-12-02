@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,8 +25,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fmH-XP-qZI">
-                    <rect key="frame" x="0.0" y="44" width="395" height="734"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmH-XP-qZI">
+                    <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CjD-dE-OHH">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
@@ -39,13 +40,14 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lT-8y-fNt">
-                                    <rect key="frame" x="16" y="35" width="30" height="30"/>
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lT-8y-fNt">
+                                    <rect key="frame" x="16" y="25" width="60" height="50"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="30" id="OcM-UI-eJd"/>
-                                        <constraint firstAttribute="width" constant="30" id="gWB-Ya-dSD"/>
+                                        <constraint firstAttribute="height" constant="50" id="OcM-UI-eJd"/>
+                                        <constraint firstAttribute="width" constant="60" id="gWB-Ya-dSD"/>
                                     </constraints>
-                                    <state key="normal" title="Button" image="icons8-back-white.png"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" image="arrowtriangle.left.fill" catalog="system"/>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -59,21 +61,23 @@
                                 <constraint firstAttribute="bottom" secondItem="BNK-Sf-kmc" secondAttribute="bottom" id="eKG-3w-ZUU"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsg-fw-3y4">
-                            <rect key="frame" x="50" y="634" width="50" height="50"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsg-fw-3y4">
+                            <rect key="frame" x="50" y="584" width="50" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="LzD-4G-FBi"/>
                                 <constraint firstAttribute="height" constant="50" id="PlS-p6-YrI"/>
                             </constraints>
-                            <state key="normal" title="Button" image="icons8-rewind.png"/>
+                            <color key="tintColor" name="orange dark brank"/>
+                            <state key="normal" image="backward.fill" catalog="system"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jg5-eY-dtc">
-                            <rect key="frame" x="275" y="634" width="50" height="50"/>
+                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jg5-eY-dtc">
+                            <rect key="frame" x="275" y="584" width="50" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="8gV-K0-G6t"/>
                                 <constraint firstAttribute="width" constant="50" id="vB8-97-zvw"/>
                             </constraints>
-                            <state key="normal" title="Button" image="icons8-fast.png"/>
+                            <color key="tintColor" name="orange dark brank"/>
+                            <state key="normal" image="forward.fill" catalog="system"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eA3-6i-VGo">
                             <rect key="frame" x="87.666666666666686" y="200" width="200" height="100"/>
@@ -85,28 +89,29 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YEn-zM-I8y">
-                            <rect key="frame" x="162.66666666666666" y="350" width="50" height="50"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YEn-zM-I8y">
+                            <rect key="frame" x="137.66666666666666" y="400" width="100" height="90"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="TmL-NA-Kjr"/>
-                                <constraint firstAttribute="width" constant="50" id="VeT-oK-HTI"/>
+                                <constraint firstAttribute="width" constant="100" id="Lqx-RS-dY1"/>
+                                <constraint firstAttribute="height" constant="90" id="QpJ-1C-HNs"/>
                             </constraints>
-                            <state key="normal" title="Button" image="icons8-pause.png"/>
+                            <color key="tintColor" name="orange dark brank"/>
+                            <state key="normal" image="playpause.fill" catalog="system"/>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstItem="YEn-zM-I8y" firstAttribute="top" secondItem="eA3-6i-VGo" secondAttribute="bottom" constant="50" id="5l2-td-9jG"/>
-                        <constraint firstAttribute="bottom" secondItem="Dsg-fw-3y4" secondAttribute="bottom" constant="50" id="O1e-XJ-ecV"/>
+                        <constraint firstItem="YEn-zM-I8y" firstAttribute="top" secondItem="eA3-6i-VGo" secondAttribute="bottom" constant="100" id="Lv8-IP-nqr"/>
+                        <constraint firstAttribute="bottom" secondItem="Dsg-fw-3y4" secondAttribute="bottom" constant="100" id="O1e-XJ-ecV"/>
                         <constraint firstAttribute="trailing" secondItem="Jg5-eY-dtc" secondAttribute="trailing" constant="50" id="UtY-ya-WnY"/>
                         <constraint firstItem="eA3-6i-VGo" firstAttribute="centerX" secondItem="fmH-XP-qZI" secondAttribute="centerX" id="ZWD-Kt-aGk"/>
                         <constraint firstItem="CjD-dE-OHH" firstAttribute="leading" secondItem="fmH-XP-qZI" secondAttribute="leading" id="aBM-GL-wqn"/>
-                        <constraint firstAttribute="bottom" secondItem="Jg5-eY-dtc" secondAttribute="bottom" constant="50" id="aGR-Pl-WXe"/>
+                        <constraint firstAttribute="bottom" secondItem="Jg5-eY-dtc" secondAttribute="bottom" constant="100" id="aGR-Pl-WXe"/>
                         <constraint firstAttribute="trailing" secondItem="CjD-dE-OHH" secondAttribute="trailing" id="l9U-al-QuT"/>
                         <constraint firstItem="Dsg-fw-3y4" firstAttribute="leading" secondItem="fmH-XP-qZI" secondAttribute="leading" constant="50" id="oF4-p5-lD1"/>
                         <constraint firstItem="eA3-6i-VGo" firstAttribute="top" secondItem="fmH-XP-qZI" secondAttribute="top" constant="200" id="riC-hO-HDm"/>
                         <constraint firstItem="CjD-dE-OHH" firstAttribute="top" secondItem="fmH-XP-qZI" secondAttribute="top" id="uMW-57-zyV"/>
-                        <constraint firstItem="YEn-zM-I8y" firstAttribute="centerX" secondItem="fmH-XP-qZI" secondAttribute="centerX" id="yCp-fu-wGv"/>
+                        <constraint firstItem="YEn-zM-I8y" firstAttribute="centerX" secondItem="fmH-XP-qZI" secondAttribute="centerX" id="xJe-KZ-pEt"/>
                     </constraints>
                 </view>
             </subviews>
@@ -122,9 +127,12 @@
         </view>
     </objects>
     <resources>
-        <image name="icons8-back-white.png" width="137.87234497070312" height="137.87234497070312"/>
-        <image name="icons8-fast.png" width="137.87234497070312" height="137.87234497070312"/>
-        <image name="icons8-pause.png" width="137.87234497070312" height="137.87234497070312"/>
-        <image name="icons8-rewind.png" width="137.87234497070312" height="137.87234497070312"/>
+        <image name="arrowtriangle.left.fill" catalog="system" width="64" height="56"/>
+        <image name="backward.fill" catalog="system" width="64" height="38"/>
+        <image name="forward.fill" catalog="system" width="64" height="38"/>
+        <image name="playpause.fill" catalog="system" width="64" height="36"/>
+        <namedColor name="orange dark brank">
+            <color red="0.93000000715255737" green="0.40000000596046448" blue="0.3880000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
