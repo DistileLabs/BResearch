@@ -78,13 +78,11 @@ class StudyViewController: UIViewController {
                     syncGroup.wait()
                 }
                 
-                
-                
                 syncGroup.enter()
                 
                 let participantDir = self.projectFileManager.getParticipantDir(reasercherName: researcherName, participantName: single)
                 
-                self.fireBaseStorage.uploadTrial(partifipantName: single, uploadFromURL: participantDir!, numberOfFiles: numOfFiles) { (isFinished) in
+                self.fireBaseStorage.uploadTrial(researcheName: researcherName, partifipantName: single, uploadFromURL: participantDir!, numberOfFiles: numOfFiles) { (isFinished) in
                     if isFinished != false {
                         Study.listOfParticipantsTrialEnds[index!].isSynced = true
                     } else {

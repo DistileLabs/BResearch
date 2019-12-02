@@ -15,11 +15,11 @@ class FireBaseStorage {
     let dispatchGroup = DispatchGroup()
     var isFinished:Bool = true
     
-    func uploadTrial(partifipantName: String, uploadFromURL:URL, numberOfFiles:Int, completion: @escaping(Bool)-> ()) {
+    func uploadTrial(researcheName: String, partifipantName: String, uploadFromURL:URL, numberOfFiles:Int, completion: @escaping(Bool)-> ()) {
         
-        let participantStorageRef = storageRef.child(partifipantName)
+        let researcherRef = storageRef.child(researcheName)
+        let participantStorageRef = researcherRef.child(partifipantName)
         if let dirContents = try? FileManager.default.contentsOfDirectory(at: uploadFromURL, includingPropertiesForKeys: nil) {
-            
             
             for dir in dirContents {
                 let trialStorageRef = participantStorageRef.child(dir.lastPathComponent)
@@ -29,7 +29,9 @@ class FireBaseStorage {
                         dispatchGroup.enter()
                         
                         let fileStorageRef = trialStorageRef.child(file.lastPathComponent)
-                        fileStorageRef.putFile(from: file, metadata: nil) { (metadData, error) in
+                        let newMetaData = StorageMetadata()
+                        newMetaData.customMetadata = ["Researcher" : "Ilya"]
+                        fileStorageRef.putFile(from: file, metadata: newMetaData) { (metadData, error) in
                             if let e = error {
                                 print(e.localizedDescription)
                                 self.isFinished = false

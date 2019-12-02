@@ -81,9 +81,27 @@ class SignInViewController: UIViewController,UINavigationControllerDelegate, GID
                     print(e)
                 } else {
                     let fireBaseStorage = FireBaseStorage()
+                    let sem = DispatchSemaphore(value: 1)
                     
                     fireBaseStorage.listFiles(from: K.FirebaseStorage.elderlySurvey) { (participantsNames) in
-                        Study.listOfParticipantsFromOnlineStorage = participantsNames
+                    
+                        if let safeParticipantNames = participantsNames {
+                            for participant in safeParticipantNames {
+                                
+                                fireBaseStorage.listFiles(from: "\(K.FirebaseStorage.elderlySurvey)/\(participant)") { (names) in
+                                    if let safeNames = names {
+                                        if  Study.listOfParticipantsFromOnlineStorage == nil {
+                                            Study.listOfParticipantsFromOnlineStorage = []
+                                        }
+                                        sem.wait()
+                                        Study.listOfParticipantsFromOnlineStorage! += safeNames
+                                        sem.signal()
+                                    }
+                                
+                                }
+                                
+                            }
+                        }
                     }
                 }
             }
