@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-Ilya_Swayder/Pods-Ilya_Swayder-resources.sh
+${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle
+${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle
